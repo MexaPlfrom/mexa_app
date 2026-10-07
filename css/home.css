@@ -879,4 +879,48 @@ body{
   .mexa-community-banner{
     height:190px;
   }
+
+  /* =========================================
+   MEXA FULL SCREEN FIX
+   ========================================= */
+
+html,
+body {
+  width: 100%;
+  min-width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+body {
+  width: 100vw;
+}
+
+#mexa-app {
+  width: 100%;
+  min-width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.mexa-home,
+.mexa-page,
+.mexa-container,
+.mexa-wrapper,
+.mexa-content {
+  width: 100%;
+  max-width: none;
+  box-sizing: border-box;
+}
+
+/* Jangan biarkan layout lama membuat area putih di kanan */
+* {
+  box-sizing: border-box;
+}
+
+img,
+video {
+  max-width: 100%;
+}
 }
