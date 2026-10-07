@@ -15,17 +15,10 @@
 
     html,
     body {
-      width: 100%;
       min-height: 100%;
-      font-family: Arial, sans-serif;
-      background:
-        radial-gradient(
-          circle at top,
-          #30498a 0%,
-          #111827 48%,
-          #070b14 100%
-        );
+      background: #070b14 !important;
       color: #e8edff;
+      font-family: Arial, sans-serif;
     }
 
     body {
@@ -41,41 +34,43 @@
       cursor: pointer;
     }
 
-    /* =========================
-       LOADING
-    ========================= */
-
     #mexa-app {
       min-height: 100vh;
     }
 
-    .mexa-loading {
+    /* =====================
+       LOADING
+    ===================== */
+
+    .loading {
       min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
+      background: #070b14;
       color: #d9e2ff;
       font-size: 18px;
     }
 
-    /* =========================
+    /* =====================
        HOME
-    ========================= */
+    ===================== */
 
     .mexa-home {
       min-height: 100vh;
       background:
         radial-gradient(
           circle at top,
-          rgba(48, 73, 138, .65),
-          rgba(17, 24, 39, .96) 48%,
+          #30498a 0%,
+          #111827 48%,
           #070b14 100%
         );
     }
 
-    /* =========================
+    /* =====================
        LOGO
-    ========================= */
+       M → E → X → A
+    ===================== */
 
     .mexa-logo {
       display: flex;
@@ -86,18 +81,19 @@
       font-weight: 900;
       letter-spacing: 2px;
       line-height: 1;
-      white-space: nowrap;
     }
 
     .logo-m,
     .logo-a {
       color: #d9e2ff;
-      text-shadow: 0 0 18px rgba(150, 170, 255, .35);
+      text-shadow:
+        0 0 18px rgba(150,170,255,.35);
     }
 
     .logo-x {
       color: #9daaff;
-      text-shadow: 0 0 18px rgba(125, 140, 255, .45);
+      text-shadow:
+        0 0 18px rgba(125,140,255,.45);
     }
 
     .logo-e {
@@ -106,58 +102,74 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      padding: 1px 0;
     }
 
     .logo-e i {
       display: block;
       width: 22px;
       height: 4px;
-      border-radius: 4px;
+      border-radius: 5px;
       background: #d9e2ff;
-      box-shadow: 0 0 10px rgba(150, 170, 255, .3);
+      box-shadow:
+        0 0 10px rgba(150,170,255,.3);
     }
 
     .logo-e i:nth-child(2) {
       width: 15px;
     }
 
-    /* =========================
+    /* =====================
        HEADER
-    ========================= */
+    ===================== */
 
     .mexa-header {
-      height: 72px;
+      min-height: 72px;
       display: flex;
       align-items: center;
       gap: 25px;
       padding: 0 28px;
+
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(7, 11, 20, .82);
-      border-bottom: 1px solid rgba(255,255,255,.08);
+
+      background: rgba(7,11,20,.92);
+
+      border-bottom:
+        1px solid rgba(255,255,255,.08);
+
       backdrop-filter: blur(18px);
     }
 
     .mexa-search {
       flex: 1;
       max-width: 600px;
+
       height: 44px;
+
       display: flex;
       align-items: center;
       gap: 10px;
+
       padding: 0 16px;
+
       border-radius: 14px;
-      background: rgba(255,255,255,.07);
-      border: 1px solid rgba(255,255,255,.08);
+
+      background:
+        rgba(255,255,255,.07);
+
+      border:
+        1px solid rgba(255,255,255,.08);
     }
 
     .mexa-search input {
       width: 100%;
+
       border: none;
       outline: none;
+
       background: transparent;
+
       color: white;
     }
 
@@ -166,124 +178,150 @@
     }
 
     .mexa-header-actions {
-      margin-left: auto;
       display: flex;
       gap: 10px;
+      margin-left: auto;
     }
 
     .mexa-header-actions button {
       width: 42px;
       height: 42px;
+
       border: none;
       border-radius: 12px;
-      background: rgba(255,255,255,.07);
+
+      background:
+        rgba(255,255,255,.07);
+
       color: white;
     }
 
-    .mexa-header-actions button:hover {
-      background: rgba(255,255,255,.14);
-    }
-
-    /* =========================
+    /* =====================
        LAYOUT
-    ========================= */
+    ===================== */
 
     .mexa-layout {
       max-width: 1500px;
       margin: auto;
+
       display: grid;
-      grid-template-columns: 230px minmax(400px, 1fr) 280px;
+
+      grid-template-columns:
+        230px
+        minmax(400px,1fr)
+        280px;
+
       gap: 22px;
+
       padding: 22px;
     }
 
-    /* =========================
+    /* =====================
        SIDEBAR
-    ========================= */
+    ===================== */
 
     .mexa-sidebar {
       display: flex;
       flex-direction: column;
       gap: 7px;
+
       position: sticky;
       top: 94px;
+
       height: max-content;
     }
 
     .mexa-sidebar button {
       width: 100%;
       min-height: 45px;
+
       display: flex;
       align-items: center;
       gap: 13px;
+
       padding: 0 15px;
+
       border: none;
       border-radius: 12px;
-      color: #b8c2dc;
+
       background: transparent;
+
+      color: #b8c2dc;
+
       text-align: left;
     }
 
-    .mexa-sidebar button:hover {
-      background: rgba(255,255,255,.07);
-      color: white;
-    }
-
+    .mexa-sidebar button:hover,
     .mexa-sidebar button.active {
-      background: rgba(120,140,255,.16);
+      background:
+        rgba(120,140,255,.16);
+
       color: white;
     }
 
-    .mexa-sidebar #btn-logout {
+    .mexa-sidebar #logout {
       margin-top: 12px;
       color: #ffb7b7;
     }
 
-    /* =========================
-       CARDS
-    ========================= */
+    /* =====================
+       CARD
+    ===================== */
 
     .mexa-card {
-      background: rgba(17,24,39,.72);
-      border: 1px solid rgba(255,255,255,.08);
+      background:
+        rgba(17,24,39,.78);
+
+      border:
+        1px solid rgba(255,255,255,.08);
+
       border-radius: 18px;
-      box-shadow: 0 15px 45px rgba(0,0,0,.25);
-      backdrop-filter: blur(15px);
+
+      box-shadow:
+        0 15px 45px rgba(0,0,0,.28);
+
+      backdrop-filter:
+        blur(15px);
     }
 
-    /* =========================
+    /* =====================
        STORIES
-    ========================= */
+    ===================== */
 
-    .mexa-stories {
+    .stories {
       padding: 18px;
       margin-bottom: 18px;
     }
 
-    .mexa-stories h3 {
+    .stories h3 {
       margin-bottom: 15px;
     }
 
     .stories-row {
       display: flex;
       gap: 12px;
+
       overflow-x: auto;
     }
 
     .story {
       min-width: 105px;
       height: 145px;
-      border-radius: 14px;
+
       padding: 10px;
+
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
-      background: linear-gradient(
-        160deg,
-        #3b4f92,
-        #161d35
-      );
-      border: 1px solid rgba(255,255,255,.08);
+
+      border-radius: 14px;
+
+      background:
+        linear-gradient(
+          160deg,
+          #3b4f92,
+          #161d35
+        );
     }
 
     .story-avatar,
@@ -293,31 +331,42 @@
       display: flex;
       align-items: center;
       justify-content: center;
+
       border-radius: 50%;
+
       font-weight: bold;
       color: white;
-      background: linear-gradient(
-        135deg,
-        #6575d8,
-        #313b78
-      );
+
+      background:
+        linear-gradient(
+          135deg,
+          #6575d8,
+          #313b78
+        );
     }
 
     .story-avatar {
       width: 45px;
       height: 45px;
+
       margin-bottom: auto;
     }
 
     .create-story > div {
       width: 45px;
       height: 45px;
+
       display: flex;
       align-items: center;
       justify-content: center;
+
       border-radius: 50%;
-      background: rgba(255,255,255,.12);
+
+      background:
+        rgba(255,255,255,.12);
+
       font-size: 25px;
+
       margin-bottom: auto;
     }
 
@@ -325,9 +374,9 @@
       font-size: 13px;
     }
 
-    /* =========================
+    /* =====================
        CREATE POST
-    ========================= */
+    ===================== */
 
     .create-post {
       padding: 18px;
@@ -349,42 +398,59 @@
     .post-input input {
       width: 100%;
       height: 45px;
+
       padding: 0 16px;
+
       border-radius: 25px;
-      border: 1px solid rgba(255,255,255,.08);
+
+      border:
+        1px solid rgba(255,255,255,.08);
+
       outline: none;
+
+      background:
+        rgba(255,255,255,.06);
+
       color: white;
-      background: rgba(255,255,255,.06);
     }
 
     .post-input input::placeholder {
       color: #9aa6c4;
     }
 
-    .post-actions {
+    .post-actions,
+    .post-buttons {
       display: flex;
-      gap: 8px;
+      gap: 5px;
+    }
+
+    .post-actions {
       margin-top: 15px;
     }
 
     .post-actions button,
     .post-buttons button {
       flex: 1;
+
+      padding: 11px;
+
       border: none;
       border-radius: 10px;
-      padding: 11px;
-      color: #c8d1ea;
+
       background: transparent;
+
+      color: #c8d1ea;
     }
 
     .post-actions button:hover,
     .post-buttons button:hover {
-      background: rgba(255,255,255,.07);
+      background:
+        rgba(255,255,255,.07);
     }
 
-    /* =========================
+    /* =====================
        POST
-    ========================= */
+    ===================== */
 
     .post {
       padding: 18px;
@@ -415,46 +481,49 @@
 
     .post-menu {
       margin-left: auto;
+
       width: 36px;
       height: 36px;
+
       border: none;
       border-radius: 10px;
-      color: #b9c2d8;
-      background: transparent;
-      font-size: 22px;
-    }
 
-    .post-menu:hover {
-      background: rgba(255,255,255,.08);
+      background: transparent;
+
+      color: #b9c2d8;
+
+      font-size: 22px;
     }
 
     .post-content {
       padding: 20px 5px;
+
       line-height: 1.6;
+
       color: #e6eaff;
     }
 
     .post-stats {
       display: flex;
       justify-content: space-between;
+
       padding: 10px 5px;
+
+      border-bottom:
+        1px solid rgba(255,255,255,.07);
+
       color: #8995b2;
+
       font-size: 13px;
-      border-bottom: 1px solid rgba(255,255,255,.07);
     }
 
-    .post-buttons {
-      display: flex;
-      gap: 5px;
-      padding-top: 8px;
-    }
-
-    /* =========================
-       RIGHT SIDEBAR
-    ========================= */
+    /* =====================
+       RIGHT
+    ===================== */
 
     .online-card {
       padding: 18px;
+
       position: sticky;
       top: 94px;
     }
@@ -467,15 +536,20 @@
       display: flex;
       align-items: center;
       gap: 10px;
+
       padding: 9px 0;
     }
 
     .online-dot {
       width: 8px;
       height: 8px;
+
       border-radius: 50%;
+
       background: #54d98c;
-      box-shadow: 0 0 10px rgba(84,217,140,.7);
+
+      box-shadow:
+        0 0 10px rgba(84,217,140,.7);
     }
 
     .friend-avatar {
@@ -483,27 +557,29 @@
       height: 38px;
     }
 
-    /* =========================
-       MOBILE
-    ========================= */
+    /* =====================
+       RESPONSIVE
+    ===================== */
 
-    @media (max-width: 1100px) {
+    @media (max-width:1100px) {
+
       .mexa-layout {
-        grid-template-columns: 200px minmax(0, 1fr);
+        grid-template-columns:
+          200px
+          minmax(0,1fr);
       }
 
       .mexa-right {
         display: none;
       }
+
     }
 
-    @media (max-width: 760px) {
+    @media (max-width:760px) {
+
       .mexa-header {
-        height: auto;
-        min-height: 65px;
         padding: 12px 15px;
         flex-wrap: wrap;
-        gap: 12px;
       }
 
       .mexa-logo {
@@ -512,8 +588,8 @@
 
       .mexa-search {
         order: 3;
-        max-width: none;
         flex-basis: 100%;
+        max-width: none;
       }
 
       .mexa-layout {
@@ -523,28 +599,26 @@
 
       .mexa-sidebar {
         position: static;
+
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 6px;
+
+        grid-template-columns:
+          repeat(4,1fr);
+
         margin-bottom: 15px;
       }
 
       .mexa-sidebar button {
         justify-content: center;
         padding: 8px 4px;
-        min-height: 42px;
       }
 
       .mexa-sidebar button span {
         display: none;
       }
 
-      .mexa-sidebar #btn-logout {
+      .mexa-sidebar #logout {
         margin-top: 0;
-      }
-
-      .mexa-header-actions {
-        margin-left: 0;
       }
 
       .post-actions,
@@ -552,26 +626,20 @@
         flex-wrap: wrap;
       }
 
-      .post-actions button,
-      .post-buttons button {
-        min-width: 30%;
-      }
     }
 
-    @media (max-width: 430px) {
-      .mexa-header-actions button {
-        width: 36px;
-        height: 36px;
-      }
+    @media (max-width:430px) {
 
       .mexa-sidebar {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns:
+          repeat(3,1fr);
       }
 
       .story {
         min-width: 95px;
         height: 130px;
       }
+
     }
   </style>
 </head>
@@ -579,19 +647,21 @@
 <body>
 
   <div id="mexa-app">
-    <div class="mexa-loading">
+    <div class="loading">
       Memuat MEXA...
     </div>
   </div>
+
 
   <script type="module">
 
     import { createClient }
       from "https://esm.sh/@supabase/supabase-js@2";
 
-    /* =========================
+
+    /* =====================
        SUPABASE
-    ========================= */
+    ===================== */
 
     const SUPABASE_URL =
       "https://cnxmogmmeixhzjqzpzqf.supabase.co";
@@ -599,57 +669,93 @@
     const SUPABASE_KEY =
       "sb_publishable__dnVVEE7jYGfiEGaXbszuw_DHBeWA7Y";
 
-    const supabase = createClient(
-      SUPABASE_URL,
-      SUPABASE_KEY
-    );
+
+    const supabase =
+      createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+      );
+
 
     const app =
-      document.getElementById("mexa-app");
+      document.getElementById(
+        "mexa-app"
+      );
 
 
-    /* =========================
-       LOGO M E X A
-    ========================= */
+    /* =====================
+       LOGIN CHECK
+    ===================== */
 
-    function mexaLogo() {
+    async function startMEXA() {
 
-      return `
-        <div class="mexa-logo" aria-label="MEXA">
+      try {
 
-          <span class="logo-m">M</span>
+        const {
+          data,
+          error
+        } =
+          await supabase.auth.getSession();
 
-          <span class="logo-e" aria-label="E">
-            <i></i>
-            <i></i>
-            <i></i>
-          </span>
 
-          <span class="logo-x">X</span>
+        if (error) {
 
-          <span class="logo-a">A</span>
+          console.error(error);
 
-        </div>
-      `;
+          window.location.href =
+            "./login.html";
+
+          return;
+        }
+
+
+        const session =
+          data?.session;
+
+
+        if (!session) {
+
+          window.location.href =
+            "./login.html";
+
+          return;
+        }
+
+
+        showHome(session.user);
+
+      }
+
+      catch (error) {
+
+        console.error(error);
+
+        window.location.href =
+          "./login.html";
+
+      }
+
     }
 
 
-    /* =========================
+    /* =====================
        HOME
-    ========================= */
+    ===================== */
 
-    function renderHome(user) {
+    function showHome(user) {
 
       const metadata =
         user?.user_metadata || {};
 
-      const displayName =
+
+      const name =
         metadata.display_name ||
         metadata.username ||
         "MEXA User";
 
-      const firstLetter =
-        displayName
+
+      const letter =
+        name
           .charAt(0)
           .toUpperCase();
 
@@ -658,15 +764,42 @@
 
         <div class="mexa-home">
 
+
           <!-- HEADER -->
 
           <header class="mexa-header">
 
-            ${mexaLogo()}
+            <div class="mexa-logo">
+
+              <span class="logo-m">
+                M
+              </span>
+
+              <span
+                class="logo-e"
+                aria-label="E"
+              >
+                <i></i>
+                <i></i>
+                <i></i>
+              </span>
+
+              <span class="logo-x">
+                X
+              </span>
+
+              <span class="logo-a">
+                A
+              </span>
+
+            </div>
+
 
             <div class="mexa-search">
 
-              <span>🔍</span>
+              <span>
+                🔍
+              </span>
 
               <input
                 type="search"
@@ -675,17 +808,18 @@
 
             </div>
 
+
             <div class="mexa-header-actions">
 
-              <button title="Notifikasi">
+              <button>
                 🔔
               </button>
 
-              <button title="Pesan">
+              <button>
                 💬
               </button>
 
-              <button title="Profil">
+              <button>
                 👤
               </button>
 
@@ -758,7 +892,7 @@
                 <span>Pengaturan</span>
               </button>
 
-              <button id="btn-logout">
+              <button id="logout">
                 🚪
                 <span>Logout</span>
               </button>
@@ -768,20 +902,30 @@
 
             <!-- FEED -->
 
-            <main class="mexa-feed">
+            <main>
 
 
               <!-- STORIES -->
 
-              <section class="mexa-card mexa-stories">
+              <section
+                class="mexa-card stories"
+              >
 
-                <h3>Stories</h3>
+                <h3>
+                  Stories
+                </h3>
+
 
                 <div class="stories-row">
 
-                  <div class="story create-story">
 
-                    <div>＋</div>
+                  <div
+                    class="story create-story"
+                  >
+
+                    <div>
+                      ＋
+                    </div>
 
                     <span>
                       Buat Story
@@ -792,8 +936,10 @@
 
                   <div class="story">
 
-                    <div class="story-avatar">
-                      ${firstLetter}
+                    <div
+                      class="story-avatar"
+                    >
+                      ${letter}
                     </div>
 
                     <span>
@@ -805,7 +951,9 @@
 
                   <div class="story">
 
-                    <div class="story-avatar">
+                    <div
+                      class="story-avatar"
+                    >
                       A
                     </div>
 
@@ -818,7 +966,9 @@
 
                   <div class="story">
 
-                    <div class="story-avatar">
+                    <div
+                      class="story-avatar"
+                    >
                       R
                     </div>
 
@@ -828,6 +978,7 @@
 
                   </div>
 
+
                 </div>
 
               </section>
@@ -835,12 +986,16 @@
 
               <!-- CREATE POST -->
 
-              <section class="mexa-card create-post">
+              <section
+                class="mexa-card create-post"
+              >
 
                 <div class="post-input">
 
-                  <div class="default-avatar">
-                    ${firstLetter}
+                  <div
+                    class="default-avatar"
+                  >
+                    ${letter}
                   </div>
 
                   <input
@@ -872,18 +1027,22 @@
 
               <!-- POST -->
 
-              <article class="mexa-card post">
+              <article
+                class="mexa-card post"
+              >
 
                 <div class="post-header">
 
-                  <div class="post-avatar">
-                    ${firstLetter}
+                  <div
+                    class="post-avatar"
+                  >
+                    ${letter}
                   </div>
 
                   <div>
 
                     <strong>
-                      ${displayName}
+                      ${name}
                     </strong>
 
                     <small>
@@ -892,7 +1051,9 @@
 
                   </div>
 
-                  <button class="post-menu">
+                  <button
+                    class="post-menu"
+                  >
                     ⋯
                   </button>
 
@@ -944,11 +1105,15 @@
 
               <!-- POST 2 -->
 
-              <article class="mexa-card post">
+              <article
+                class="mexa-card post"
+              >
 
                 <div class="post-header">
 
-                  <div class="post-avatar">
+                  <div
+                    class="post-avatar"
+                  >
                     A
                   </div>
 
@@ -964,7 +1129,9 @@
 
                   </div>
 
-                  <button class="post-menu">
+                  <button
+                    class="post-menu"
+                  >
                     ⋯
                   </button>
 
@@ -996,6 +1163,7 @@
 
               </article>
 
+
             </main>
 
 
@@ -1003,7 +1171,9 @@
 
             <aside class="mexa-right">
 
-              <section class="mexa-card online-card">
+              <section
+                class="mexa-card online-card"
+              >
 
                 <h3>
                   Teman Online
@@ -1012,9 +1182,13 @@
 
                 <div class="online-user">
 
-                  <span class="online-dot"></span>
+                  <span
+                    class="online-dot"
+                  ></span>
 
-                  <div class="friend-avatar">
+                  <div
+                    class="friend-avatar"
+                  >
                     A
                   </div>
 
@@ -1027,9 +1201,13 @@
 
                 <div class="online-user">
 
-                  <span class="online-dot"></span>
+                  <span
+                    class="online-dot"
+                  ></span>
 
-                  <div class="friend-avatar">
+                  <div
+                    class="friend-avatar"
+                  >
                     R
                   </div>
 
@@ -1042,9 +1220,13 @@
 
                 <div class="online-user">
 
-                  <span class="online-dot"></span>
+                  <span
+                    class="online-dot"
+                  ></span>
 
-                  <div class="friend-avatar">
+                  <div
+                    class="friend-avatar"
+                  >
                     S
                   </div>
 
@@ -1058,98 +1240,32 @@
 
             </aside>
 
+
           </div>
 
         </div>
       `;
 
 
-      /* =========================
+      /* =====================
          LOGOUT
-      ========================= */
+      ===================== */
 
-      const logoutButton =
-        document.getElementById("btn-logout");
-
-      logoutButton.onclick =
-        async function () {
-
-          logoutButton.disabled = true;
-
-          logoutButton.innerHTML =
-            "⏳ <span>Logout...</span>";
+      document
+        .getElementById("logout")
+        .onclick = async () => {
 
           await supabase.auth.signOut();
 
           window.location.href =
             "./login.html";
+
         };
+
     }
 
 
-    /* =========================
-       LOGIN CHECK
-    ========================= */
-
-    async function checkLogin() {
-
-      try {
-
-        const {
-          data,
-          error
-        } = await supabase.auth.getSession();
-
-
-        if (error) {
-          console.error(
-            "Supabase session error:",
-            error
-          );
-
-          window.location.href =
-            "./login.html";
-
-          return;
-        }
-
-
-        const session =
-          data?.session;
-
-
-        if (!session) {
-
-          window.location.href =
-            "./login.html";
-
-          return;
-        }
-
-
-        renderHome(
-          session.user
-        );
-
-
-      } catch (error) {
-
-        console.error(
-          "MEXA error:",
-          error
-        );
-
-        window.location.href =
-          "./login.html";
-      }
-    }
-
-
-    /* =========================
-       START MEXA
-    ========================= */
-
-    checkLogin();
+    startMEXA();
 
   </script>
 
