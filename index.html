@@ -1,309 +1,521 @@
-```html
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>MEXA — Social</title>
+<title>MEXA</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+<style>
+*{
+  box-sizing:border-box;
+}
 
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #eef2f7;
-      color: #172033;
-    }
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:#f3f6ff;
+  color:#17213d;
+}
 
-    /* HEADER */
-    .mexa-header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      height: 64px;
+/* ================= LOGO ================= */
 
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+.mexa-logo{
+  display:flex;
+  align-items:center;
+  gap:3px;
+  font-size:30px;
+  font-weight:900;
+  letter-spacing:1px;
+  color:#3158e8;
+}
 
-      padding: 0 22px;
+.logo-e{
+  width:24px;
+  height:27px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+}
 
-      background: #ffffff;
-      border-bottom: 1px solid #dfe5ee;
-    }
+.logo-e span{
+  height:5px;
+  border-radius:4px;
+  background:linear-gradient(90deg,#8d5cff,#3d72ff);
+}
 
-    .mexa-logo {
-      font-size: 27px;
-      font-weight: 900;
-      letter-spacing: 2px;
-      color: #3f56d8;
-    }
+.logo-e span:nth-child(1){
+  width:24px;
+}
 
-    .mexa-search {
-      width: 280px;
-      padding: 11px 16px;
-      border: 1px solid #dce2ec;
-      border-radius: 22px;
-      outline: none;
-      background: #f5f7fa;
-    }
+.logo-e span:nth-child(2){
+  width:17px;
+}
 
-    .mexa-header-actions {
-      display: flex;
-      gap: 8px;
-    }
+.logo-e span:nth-child(3){
+  width:24px;
+}
 
-    .mexa-header-actions button {
-      border: 0;
-      background: #f0f3f8;
-      border-radius: 10px;
-      padding: 10px 13px;
-      cursor: pointer;
-      font-weight: 600;
-      color: #26314a;
-    }
+/* ================= HEADER ================= */
 
-    /* LAYOUT */
-    .mexa-layout {
-      width: 100%;
-      max-width: 1180px;
-      margin: 24px auto;
-      padding: 0 16px;
+.header{
+  position:sticky;
+  top:0;
+  z-index:50;
+  height:68px;
+  background:rgba(255,255,255,.95);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid #e1e6f3;
+  display:flex;
+  align-items:center;
+  padding:0 22px;
+  gap:25px;
+}
 
-      display: grid;
-      grid-template-columns: 220px minmax(0, 650px) 240px;
-      gap: 20px;
-      align-items: start;
-    }
+.search{
+  flex:1;
+  max-width:430px;
+  margin:auto;
+  position:relative;
+}
 
-    /* SIDEBAR */
-    .mexa-sidebar,
-    .mexa-rightbar {
-      background: #ffffff;
-      border: 1px solid #e1e6ee;
-      border-radius: 16px;
-      padding: 14px;
-    }
+.search input{
+  width:100%;
+  border:0;
+  outline:0;
+  background:#f0f3fb;
+  padding:13px 18px 13px 43px;
+  border-radius:25px;
+  font-size:14px;
+}
 
-    .mexa-menu {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
+.search-icon{
+  position:absolute;
+  left:17px;
+  top:11px;
+  font-size:18px;
+}
 
-    .mexa-menu button {
-      border: 0;
-      background: transparent;
-      text-align: left;
-      padding: 12px;
-      border-radius: 10px;
-      cursor: pointer;
-      color: #354057;
-      font-weight: 600;
-    }
+.header-actions{
+  display:flex;
+  gap:8px;
+}
 
-    .mexa-menu button:hover {
-      background: #f1f4fa;
-    }
+.icon-btn{
+  width:40px;
+  height:40px;
+  border:0;
+  border-radius:50%;
+  background:#f1f4fb;
+  cursor:pointer;
+  font-size:17px;
+}
 
-    /* FEED */
-    .mexa-card {
-      background: #ffffff;
-      border: 1px solid #e1e6ee;
-      border-radius: 17px;
-      margin-bottom: 16px;
-      overflow: hidden;
-    }
+/* ================= LAYOUT ================= */
 
-    .mexa-card-header {
-      display: flex;
-      align-items: center;
-      gap: 11px;
-      padding: 16px;
-    }
+.layout{
+  max-width:1280px;
+  margin:auto;
+  padding:22px 18px;
+  display:grid;
+  grid-template-columns:220px minmax(0,650px) 270px;
+  gap:22px;
+}
 
-    .mexa-avatar {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
+/* ================= SIDEBAR ================= */
 
-      display: flex;
-      align-items: center;
-      justify-content: center;
+.sidebar{
+  position:sticky;
+  top:90px;
+  height:max-content;
+  background:#fff;
+  border:1px solid #e1e6f3;
+  border-radius:18px;
+  padding:13px;
+}
 
-      background: #dce4ff;
-      color: #3e55c7;
-      font-weight: 800;
-    }
+.menu{
+  display:flex;
+  flex-direction:column;
+  gap:5px;
+}
 
-    .mexa-user-name {
-      font-weight: 800;
-    }
+.menu button{
+  border:0;
+  background:transparent;
+  padding:13px;
+  border-radius:12px;
+  text-align:left;
+  font-size:14px;
+  font-weight:600;
+  color:#46516d;
+  cursor:pointer;
+}
 
-    .mexa-user-time {
-      margin-top: 3px;
-      color: #8791a5;
-      font-size: 12px;
-    }
+.menu button:hover,
+.menu .active{
+  background:#edf1ff;
+  color:#3158e8;
+}
 
-    .mexa-card-body {
-      padding: 0 16px 16px;
-      line-height: 1.5;
-    }
+/* ================= CARD ================= */
 
-    .mexa-card-actions {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      border-top: 1px solid #edf0f5;
-    }
+.card{
+  background:#fff;
+  border:1px solid #e1e6f3;
+  border-radius:18px;
+  margin-bottom:16px;
+  overflow:hidden;
+  box-shadow:0 5px 20px rgba(41,66,130,.04);
+}
 
-    .mexa-card-actions button {
-      border: 0;
-      background: #ffffff;
-      padding: 12px;
-      cursor: pointer;
-      color: #59657b;
-      font-weight: 600;
-    }
+/* ================= CREATE ================= */
 
-    .mexa-card-actions button:hover {
-      background: #f5f7fa;
-    }
+.create{
+  padding:16px;
+}
 
-    /* CREATE POST */
-    .mexa-create {
-      padding: 16px;
-    }
+.create-top{
+  display:flex;
+  gap:12px;
+}
 
-    .mexa-create textarea {
-      width: 100%;
-      min-height: 85px;
-      resize: vertical;
+.avatar{
+  width:43px;
+  height:43px;
+  flex:none;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(135deg,#476cff,#895cff);
+  color:white;
+  font-weight:800;
+}
 
-      border: 1px solid #dce2ec;
-      border-radius: 13px;
+.create textarea{
+  flex:1;
+  min-height:70px;
+  border:0;
+  outline:0;
+  resize:none;
+  font-family:inherit;
+  font-size:15px;
+  padding:8px;
+  background:#f7f8fc;
+  border-radius:13px;
+}
 
-      padding: 13px;
-      font-family: inherit;
-      outline: none;
-    }
+.create-tools{
+  margin-top:13px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
 
-    .mexa-create-footer {
-      display: flex;
-      justify-content: flex-end;
-      margin-top: 10px;
-    }
+.tools{
+  display:flex;
+  gap:5px;
+}
 
-    .mexa-post-button {
-      border: 0;
-      border-radius: 10px;
-      background: #4b61d3;
-      color: white;
-      padding: 11px 19px;
-      font-weight: 700;
-      cursor: pointer;
-    }
+.tool{
+  border:0;
+  background:#f3f5fb;
+  border-radius:10px;
+  padding:9px 12px;
+  cursor:pointer;
+}
 
-    /* RIGHT */
-    .mexa-rightbar h3 {
-      margin: 4px 0 14px;
-      font-size: 16px;
-    }
+.post-btn{
+  border:0;
+  background:linear-gradient(135deg,#396cff,#754cff);
+  color:white;
+  font-weight:700;
+  padding:10px 20px;
+  border-radius:11px;
+  cursor:pointer;
+}
 
-    .mexa-trend {
-      padding: 10px 0;
-      border-bottom: 1px solid #edf0f5;
-    }
+/* ================= POST ================= */
 
-    .mexa-trend:last-child {
-      border-bottom: 0;
-    }
+.post-header{
+  display:flex;
+  align-items:center;
+  gap:11px;
+  padding:16px;
+}
 
-    .mexa-trend small {
-      color: #8993a6;
-    }
+.user-name{
+  font-weight:800;
+  font-size:14px;
+}
 
-    /* MOBILE */
-    @media (max-width: 950px) {
-      .mexa-layout {
-        grid-template-columns: 1fr;
-        max-width: 700px;
-      }
+.user-time{
+  color:#8992a8;
+  font-size:12px;
+  margin-top:3px;
+}
 
-      .mexa-sidebar,
-      .mexa-rightbar {
-        display: none;
-      }
+.more{
+  margin-left:auto;
+  border:0;
+  background:none;
+  font-size:20px;
+  cursor:pointer;
+}
 
-      .mexa-search {
-        width: 180px;
-      }
-    }
+.post-text{
+  padding:0 16px 14px;
+  line-height:1.55;
+  font-size:14px;
+}
 
-    @media (max-width: 600px) {
-      .mexa-header {
-        padding: 0 12px;
-      }
+.post-image{
+  width:100%;
+  height:320px;
+  object-fit:cover;
+  display:block;
+  background:#e9edfa;
+}
 
-      .mexa-search {
-        display: none;
-      }
+.post-stats{
+  padding:11px 16px;
+  color:#7d879d;
+  font-size:13px;
+  display:flex;
+  justify-content:space-between;
+}
 
-      .mexa-logo {
-        font-size: 23px;
-      }
+.post-actions{
+  border-top:1px solid #edf0f6;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+}
 
-      .mexa-header-actions button {
-        padding: 9px;
-      }
+.post-actions button{
+  border:0;
+  background:white;
+  padding:13px;
+  color:#66718a;
+  cursor:pointer;
+  font-weight:600;
+}
 
-      .mexa-layout {
-        margin-top: 12px;
-        padding: 0 9px;
-      }
-    }
-  </style>
+.post-actions button:hover{
+  background:#f5f7fc;
+  color:#3158e8;
+}
+
+/* ================= RIGHT ================= */
+
+.right-card{
+  background:#fff;
+  border:1px solid #e1e6f3;
+  border-radius:18px;
+  padding:16px;
+  margin-bottom:16px;
+}
+
+.right-card h3{
+  margin:2px 0 15px;
+  font-size:16px;
+}
+
+.trend{
+  padding:11px 0;
+  border-bottom:1px solid #edf0f5;
+}
+
+.trend:last-child{
+  border-bottom:0;
+}
+
+.trend small{
+  color:#8a93a8;
+}
+
+/* ================= PROFILE ================= */
+
+.profile-mini{
+  text-align:center;
+}
+
+.profile-mini .avatar{
+  margin:auto;
+  width:60px;
+  height:60px;
+  font-size:20px;
+}
+
+.profile-mini h3{
+  margin:10px 0 3px;
+}
+
+.profile-mini p{
+  margin:0;
+  color:#8790a5;
+  font-size:12px;
+}
+
+.profile-btn{
+  width:100%;
+  margin-top:13px;
+  border:0;
+  border-radius:10px;
+  padding:10px;
+  background:#edf1ff;
+  color:#3158e8;
+  font-weight:700;
+}
+
+/* ================= MOBILE NAV ================= */
+
+.bottom-nav{
+  display:none;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:1000px){
+
+  .layout{
+    grid-template-columns:1fr;
+    max-width:700px;
+  }
+
+  .sidebar,
+  .right-column{
+    display:none;
+  }
+
+  .header{
+    padding:0 13px;
+    gap:10px;
+  }
+
+  .search{
+    max-width:none;
+  }
+}
+
+@media(max-width:600px){
+
+  .header{
+    height:60px;
+  }
+
+  .mexa-logo{
+    font-size:24px;
+  }
+
+  .search{
+    display:none;
+  }
+
+  .header-actions .icon-btn:nth-child(2){
+    display:none;
+  }
+
+  .layout{
+    padding:10px 8px 80px;
+  }
+
+  .card{
+    border-radius:15px;
+  }
+
+  .post-image{
+    height:260px;
+  }
+
+  .bottom-nav{
+    position:fixed;
+    display:flex;
+    left:0;
+    right:0;
+    bottom:0;
+    height:62px;
+    background:white;
+    border-top:1px solid #e1e6f3;
+    z-index:100;
+    justify-content:space-around;
+    align-items:center;
+  }
+
+  .bottom-nav button{
+    border:0;
+    background:none;
+    font-size:19px;
+    color:#69748e;
+  }
+
+  .bottom-nav .plus{
+    width:45px;
+    height:45px;
+    border-radius:50%;
+    background:linear-gradient(135deg,#396cff,#754cff);
+    color:white;
+    font-size:23px;
+    margin-top:-20px;
+    box-shadow:0 8px 20px rgba(63,91,230,.35);
+  }
+}
+</style>
 </head>
 
 <body>
 
-<header class="mexa-header">
+<!-- HEADER -->
 
-  <div class="mexa-logo">
-    MEXA
+<header class="header">
+
+  <div class="mexa-logo" aria-label="MEXA">
+    <span>M</span>
+
+    <span class="logo-e">
+      <span></span>
+      <span></span>
+      <span></span>
+    </span>
+
+    <span>X</span>
+    <span>A</span>
   </div>
 
-  <input
-    class="mexa-search"
-    type="search"
-    placeholder="Cari di MEXA..."
-  >
+  <div class="search">
+    <span class="search-icon">🔎</span>
+    <input
+      type="search"
+      placeholder="Cari orang, postingan, atau topik..."
+    >
+  </div>
 
-  <div class="mexa-header-actions">
-    <button>🔔</button>
-    <button>✉️</button>
-    <button>👤</button>
+  <div class="header-actions">
+    <button class="icon-btn">🔔</button>
+    <button class="icon-btn">✉️</button>
+    <button class="icon-btn">👤</button>
   </div>
 
 </header>
 
 
-<div class="mexa-layout">
+<!-- MAIN -->
 
-  <!-- LEFT -->
-  <aside class="mexa-sidebar">
+<div class="layout">
 
-    <nav class="mexa-menu">
+  <!-- SIDEBAR -->
 
-      <button>🏠 Home</button>
+  <aside class="sidebar">
+
+    <nav class="menu">
+
+      <button class="active">🏠 Beranda</button>
+      <button>🔎 Jelajah</button>
       <button>👤 Profil</button>
       <button>👥 Teman</button>
-      <button>🔔 Notifikasi</button>
       <button>💬 Pesan</button>
+      <button>🔔 Notifikasi</button>
+      <button>📌 Postingan Saya</button>
       <button>⚙️ Pengaturan</button>
 
     </nav>
@@ -311,19 +523,36 @@
   </aside>
 
 
-  <!-- CENTER -->
+  <!-- FEED -->
+
   <main>
 
     <!-- CREATE POST -->
-    <section class="mexa-card mexa-create">
 
-      <textarea
-        placeholder="Apa yang ingin kamu bagikan?"
-      ></textarea>
+    <section class="card create">
 
-      <div class="mexa-create-footer">
+      <div class="create-top">
 
-        <button class="mexa-post-button">
+        <div class="avatar">M</div>
+
+        <textarea
+          placeholder="Apa yang kamu pikirkan?"
+        ></textarea>
+
+      </div>
+
+      <div class="create-tools">
+
+        <div class="tools">
+
+          <button class="tool">📷 Foto</button>
+          <button class="tool">🎥 Video</button>
+          <button class="tool">📍 Lokasi</button>
+          <button class="tool">👥 Tag</button>
+
+        </div>
+
+        <button class="post-btn">
           Posting
         </button>
 
@@ -333,35 +562,64 @@
 
 
     <!-- POST 1 -->
-    <article class="mexa-card">
 
-      <div class="mexa-card-header">
+    <article class="card">
 
-        <div class="mexa-avatar">
-          M
-        </div>
+      <div class="post-header">
+
+        <div class="avatar">M</div>
 
         <div>
-          <div class="mexa-user-name">
+          <div class="user-name">
             MEXA User
           </div>
 
-          <div class="mexa-user-time">
-            Baru saja
+          <div class="user-time">
+            Baru saja · 🌎 Publik
           </div>
         </div>
 
+        <button class="more">⋯</button>
+
       </div>
 
-      <div class="mexa-card-body">
+      <div class="post-text">
+
         Selamat datang di MEXA! 🎉
         <br>
         Connect. Share. Grow.
+        <br><br>
+        Tempat untuk berbagi cerita dan terhubung
+        bersama komunitas.
+
       </div>
 
-      <div class="mexa-card-actions">
+      <div
+        class="post-image"
+        style="
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        background:
+        linear-gradient(135deg,#172d91,#713de0);
+        color:white;
+        font-size:35px;
+        font-weight:900;
+        "
+      >
+        MEXA
+      </div>
 
-        <button>👍 Suka</button>
+      <div class="post-stats">
+
+        <span>❤️ 24 suka</span>
+        <span>💬 8 komentar · ↗️ 3</span>
+
+      </div>
+
+      <div class="post-actions">
+
+        <button>❤️ Suka</button>
         <button>💬 Komentar</button>
         <button>↗️ Bagikan</button>
 
@@ -371,33 +629,64 @@
 
 
     <!-- POST 2 -->
-    <article class="mexa-card">
 
-      <div class="mexa-card-header">
+    <article class="card">
 
-        <div class="mexa-avatar">
-          A
-        </div>
+      <div class="post-header">
+
+        <div class="avatar">A</div>
 
         <div>
-          <div class="mexa-user-name">
+          <div class="user-name">
             MEXA Community
           </div>
 
-          <div class="mexa-user-time">
-            1 jam lalu
+          <div class="user-time">
+            1 jam lalu · 🌎 Publik
           </div>
         </div>
 
+        <button class="more">⋯</button>
+
       </div>
 
-      <div class="mexa-card-body">
+      <div class="post-text">
+
         Ini adalah tampilan awal feed MEXA.
+        Yuk bangun komunitas bersama! 💙
+
       </div>
 
-      <div class="mexa-card-actions">
+      <div
+        class="post-image"
+        style="
+        background:
+        linear-gradient(
+          135deg,
+          #486fff,
+          #a052e8
+        );
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        color:white;
+        font-size:25px;
+        font-weight:800;
+        "
+      >
+        Connect. Share. Grow.
+      </div>
 
-        <button>👍 Suka</button>
+      <div class="post-stats">
+
+        <span>❤️ 18 suka</span>
+        <span>💬 5 komentar · ↗️ 2</span>
+
+      </div>
+
+      <div class="post-actions">
+
+        <button>❤️ Suka</button>
         <button>💬 Komentar</button>
         <button>↗️ Bagikan</button>
 
@@ -408,33 +697,110 @@
   </main>
 
 
-  <!-- RIGHT -->
-  <aside class="mexa-rightbar">
+  <!-- RIGHT COLUMN -->
 
-    <h3>Trending MEXA</h3>
+  <aside class="right-column">
 
-    <div class="mexa-trend">
-      <strong>#MEXA</strong>
-      <br>
-      <small>Topik populer</small>
+    <div class="right-card profile-mini">
+
+      <div class="avatar">
+        M
+      </div>
+
+      <h3>
+        MEXA User
+      </h3>
+
+      <p>
+        @mexauser
+      </p>
+
+      <button class="profile-btn">
+        Lihat Profil
+      </button>
+
     </div>
 
-    <div class="mexa-trend">
-      <strong>#Community</strong>
-      <br>
-      <small>Yang sedang dibicarakan</small>
+
+    <div class="right-card">
+
+      <h3>
+        🔥 Trending MEXA
+      </h3>
+
+      <div class="trend">
+        <strong>#MEXA</strong>
+        <br>
+        <small>Topik populer</small>
+      </div>
+
+      <div class="trend">
+        <strong>#Community</strong>
+        <br>
+        <small>Yang sedang dibicarakan</small>
+      </div>
+
+      <div class="trend">
+        <strong>#Gaming</strong>
+        <br>
+        <small>2,4 rb postingan</small>
+      </div>
+
+      <div class="trend">
+        <strong>#Indonesia</strong>
+        <br>
+        <small>Topik populer</small>
+      </div>
+
     </div>
 
-    <div class="mexa-trend">
-      <strong>#Share</strong>
-      <br>
-      <small>Trending sekarang</small>
+
+    <div class="right-card">
+
+      <h3>
+        👥 Saran Pengguna
+      </h3>
+
+      <div class="trend">
+        <strong>Rina</strong>
+        <br>
+        <small>@rina</small>
+      </div>
+
+      <div class="trend">
+        <strong>Budi</strong>
+        <br>
+        <small>@budi</small>
+      </div>
+
+      <div class="trend">
+        <strong>Sari</strong>
+        <br>
+        <small>@sari</small>
+      </div>
+
     </div>
 
   </aside>
 
 </div>
 
+
+<!-- MOBILE NAV -->
+
+<nav class="bottom-nav">
+
+  <button>🏠</button>
+  <button>🔎</button>
+
+  <button class="plus">
+    +
+  </button>
+
+  <button>🔔</button>
+  <button>👤</button>
+
+</nav>
+
 </body>
 </html>
-```
