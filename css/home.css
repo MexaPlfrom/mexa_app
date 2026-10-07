@@ -1,0 +1,517 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  color: #e8edff;
+  background:
+    radial-gradient(circle at top, #30498a 0%, #111827 48%, #070b14 100%);
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* =========================
+   HOME
+========================= */
+
+.mexa-home {
+  min-height: 100vh;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.mexa-header {
+  height: 70px;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+
+  display: flex;
+  align-items: center;
+  gap: 24px;
+
+  padding: 0 24px;
+
+  background: rgba(7, 11, 20, 0.82);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid rgba(157, 170, 255, 0.15);
+}
+
+/* LOGO MEXA */
+
+.mexa-logo {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  font-size: 32px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  line-height: 1;
+}
+
+.logo-m,
+.logo-a {
+  color: #d9e2ff;
+  text-shadow: 0 0 16px rgba(150, 170, 255, 0.35);
+}
+
+.logo-x {
+  color: #9daaff;
+  text-shadow: 0 0 18px rgba(125, 140, 255, 0.45);
+}
+
+.logo-e {
+  width: 21px;
+  height: 27px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  padding: 1px 0;
+}
+
+.logo-e i {
+  display: block;
+
+  width: 21px;
+  height: 4px;
+
+  border-radius: 4px;
+
+  background: #d9e2ff;
+  box-shadow: 0 0 8px rgba(150, 170, 255, 0.3);
+}
+
+.logo-e i:nth-child(2) {
+  width: 15px;
+}
+
+/* SEARCH */
+
+.mexa-search {
+  flex: 1;
+  max-width: 600px;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 10px 15px;
+
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(157, 170, 255, 0.14);
+  border-radius: 14px;
+}
+
+.mexa-search input {
+  width: 100%;
+
+  border: none;
+  outline: none;
+
+  color: white;
+  background: transparent;
+}
+
+.mexa-search input::placeholder {
+  color: #8f9ab8;
+}
+
+/* HEADER BUTTON */
+
+.mexa-header-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.mexa-header-actions button {
+  width: 42px;
+  height: 42px;
+
+  border: 1px solid rgba(157, 170, 255, 0.12);
+  border-radius: 50%;
+
+  color: white;
+  background: rgba(255, 255, 255, 0.06);
+
+  transition: 0.2s;
+}
+
+.mexa-header-actions button:hover {
+  background: rgba(157, 170, 255, 0.15);
+  transform: translateY(-1px);
+}
+
+/* =========================
+   LAYOUT
+========================= */
+
+.mexa-layout {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 680px) 260px;
+  justify-content: center;
+  gap: 22px;
+
+  max-width: 1250px;
+  margin: auto;
+  padding: 22px;
+}
+
+/* =========================
+   SIDEBAR
+========================= */
+
+.mexa-sidebar {
+  position: sticky;
+  top: 92px;
+
+  height: max-content;
+
+  padding: 12px;
+
+  background: rgba(7, 11, 20, 0.62);
+  border: 1px solid rgba(157, 170, 255, 0.12);
+  border-radius: 18px;
+
+  backdrop-filter: blur(15px);
+}
+
+.mexa-sidebar button {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  margin-bottom: 5px;
+  padding: 11px 12px;
+
+  border: none;
+  border-radius: 10px;
+
+  color: #aeb8d6;
+  background: transparent;
+
+  text-align: left;
+
+  transition: 0.2s;
+}
+
+.mexa-sidebar button:hover {
+  color: white;
+  background: rgba(157, 170, 255, 0.09);
+}
+
+.mexa-sidebar button.active {
+  color: white;
+  background: rgba(157, 170, 255, 0.14);
+}
+
+/* =========================
+   CARD
+========================= */
+
+.mexa-card {
+  margin-bottom: 18px;
+  padding: 18px;
+
+  background: rgba(10, 15, 28, 0.72);
+  border: 1px solid rgba(157, 170, 255, 0.12);
+  border-radius: 18px;
+
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.22);
+  backdrop-filter: blur(15px);
+}
+
+/* =========================
+   STORIES
+========================= */
+
+.mexa-stories h3,
+.online-card h3 {
+  margin: 0 0 14px;
+}
+
+.stories-row {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+}
+
+.story {
+  min-width: 82px;
+
+  text-align: center;
+  font-size: 12px;
+  color: #b9c2dd;
+}
+
+.story-avatar,
+.create-story > div {
+  width: 62px;
+  height: 62px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin: auto auto 7px;
+
+  border-radius: 50%;
+
+  color: white;
+  background: linear-gradient(145deg, #536bc2, #202b50);
+
+  border: 2px solid rgba(157, 170, 255, 0.35);
+}
+
+.create-story > div {
+  font-size: 25px;
+}
+
+/* =========================
+   CREATE POST
+========================= */
+
+.post-input {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.default-avatar,
+.post-avatar,
+.friend-avatar {
+  flex-shrink: 0;
+
+  width: 44px;
+  height: 44px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  color: white;
+  font-weight: bold;
+
+  background: linear-gradient(145deg, #536bc2, #202b50);
+}
+
+.post-input input {
+  width: 100%;
+
+  padding: 13px 16px;
+
+  border: 1px solid rgba(157, 170, 255, 0.12);
+  border-radius: 25px;
+
+  outline: none;
+
+  color: white;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.post-input input::placeholder {
+  color: #8791ad;
+}
+
+.post-actions {
+  display: flex;
+  gap: 8px;
+
+  margin-top: 15px;
+  padding-top: 12px;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.post-actions button,
+.post-buttons button {
+  flex: 1;
+
+  padding: 9px;
+
+  border: none;
+  border-radius: 10px;
+
+  color: #aeb8d6;
+  background: transparent;
+}
+
+.post-actions button:hover,
+.post-buttons button:hover {
+  color: white;
+  background: rgba(157, 170, 255, 0.08);
+}
+
+/* =========================
+   POST
+========================= */
+
+.post-header {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+
+.post-header > div:nth-child(2) {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.post-header small {
+  color: #78839f;
+}
+
+.post-menu {
+  margin-left: auto;
+
+  width: 36px;
+  height: 36px;
+
+  border: none;
+  border-radius: 50%;
+
+  color: #aeb8d6;
+  background: transparent;
+}
+
+.post-menu:hover {
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.post-content {
+  margin: 18px 0;
+
+  line-height: 1.6;
+  color: #dce3f8;
+}
+
+.post-stats {
+  display: flex;
+  justify-content: space-between;
+
+  padding: 10px 0;
+
+  color: #7f8aa8;
+  font-size: 13px;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.post-buttons {
+  display: flex;
+  gap: 5px;
+
+  padding-top: 7px;
+}
+
+/* =========================
+   RIGHT SIDEBAR
+========================= */
+
+.online-user {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  padding: 9px 0;
+
+  color: #cbd4ec;
+}
+
+.online-dot {
+  width: 8px;
+  height: 8px;
+
+  border-radius: 50%;
+
+  background: #5ee48a;
+  box-shadow: 0 0 8px rgba(94, 228, 138, 0.6);
+}
+
+.friend-avatar {
+  width: 36px;
+  height: 36px;
+  font-size: 13px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 1000px) {
+  .mexa-layout {
+    grid-template-columns: 190px minmax(0, 1fr);
+  }
+
+  .mexa-right {
+    display: none;
+  }
+}
+
+@media (max-width: 700px) {
+  .mexa-header {
+    padding: 0 12px;
+    gap: 10px;
+  }
+
+  .mexa-header .mexa-logo {
+    font-size: 25px;
+  }
+
+  .mexa-search {
+    max-width: none;
+  }
+
+  .mexa-header-actions button {
+    width: 36px;
+    height: 36px;
+  }
+
+  .mexa-layout {
+    display: block;
+    padding: 12px;
+  }
+
+  .mexa-sidebar {
+    position: static;
+
+    display: flex;
+    overflow-x: auto;
+
+    margin-bottom: 12px;
+  }
+
+  .mexa-sidebar button {
+    width: auto;
+    min-width: max-content;
+    margin: 0;
+  }
+
+  .mexa-sidebar button span {
+    display: none;
+  }
+
+  .mexa-card {
+    border-radius: 15px;
+    padding: 14px;
+  }
+}
