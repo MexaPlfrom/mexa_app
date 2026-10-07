@@ -13,34 +13,30 @@ const supabase = createClient(
 
 const app = document.getElementById("mexa-app");
 
-async function loadHome() {
-  const {
-    data: { session }
-  } = await supabase.auth.getSession();
+function mexaLogo() {
+  return `
+    <div class="mexa-logo" aria-label="MEXA">
+      <span class="logo-m">M</span>
 
-  if (!session) {
-    window.location.href = "./login.html";
-    return;
-  }
+      <span class="logo-e" aria-label="E">
+        <i></i>
+        <i></i>
+        <i></i>
+      </span>
 
+      <span class="logo-x">X</span>
+      <span class="logo-a">A</span>
+    </div>
+  `;
+}
+
+function renderHome() {
   app.innerHTML = `
     <div class="mexa-home">
 
-      <!-- HEADER -->
       <header class="mexa-header">
 
-        <div class="mexa-logo" aria-label="MEXA">
-          <span class="logo-m">M</span>
-
-          <span class="logo-e" aria-label="E">
-            <i></i>
-            <i></i>
-            <i></i>
-          </span>
-
-          <span class="logo-x">X</span>
-          <span class="logo-a">A</span>
-        </div>
+        ${mexaLogo()}
 
         <div class="mexa-search">
           <span>🔍</span>
@@ -51,41 +47,69 @@ async function loadHome() {
         </div>
 
         <div class="mexa-header-actions">
-          <button>🔔</button>
-          <button>💬</button>
-          <button>👤</button>
+          <button type="button">🔔</button>
+          <button type="button">💬</button>
+          <button type="button">👤</button>
         </div>
 
       </header>
 
-      <!-- BODY -->
       <div class="mexa-layout">
 
-        <!-- SIDEBAR -->
         <aside class="mexa-sidebar">
 
-          <button class="active">🏠 <span>Home</span></button>
-          <button>👤 <span>Profil</span></button>
-          <button>👥 <span>Teman</span></button>
-          <button>📝 <span>Postingan</span></button>
-          <button>📷 <span>Foto</span></button>
-          <button>🎬 <span>Video</span></button>
-          <button>▶️ <span>Reels</span></button>
-          <button>💬 <span>Messenger</span></button>
-          <button>🔔 <span>Notifikasi</span></button>
-          <button>🤖 <span>MEXA AI</span></button>
-          <button>⚙️ <span>Pengaturan</span></button>
+          <button type="button" class="active">
+            🏠 <span>Home</span>
+          </button>
 
-          <button id="btn-logout">
+          <button type="button">
+            👤 <span>Profil</span>
+          </button>
+
+          <button type="button">
+            👥 <span>Teman</span>
+          </button>
+
+          <button type="button">
+            📝 <span>Postingan</span>
+          </button>
+
+          <button type="button">
+            📷 <span>Foto</span>
+          </button>
+
+          <button type="button">
+            🎬 <span>Video</span>
+          </button>
+
+          <button type="button">
+            ▶️ <span>Reels</span>
+          </button>
+
+          <button type="button">
+            💬 <span>Messenger</span>
+          </button>
+
+          <button type="button">
+            🔔 <span>Notifikasi</span>
+          </button>
+
+          <button type="button">
+            🤖 <span>MEXA AI</span>
+          </button>
+
+          <button type="button">
+            ⚙️ <span>Pengaturan</span>
+          </button>
+
+          <button type="button" id="btn-logout">
             🚪 <span>Logout</span>
           </button>
 
         </aside>
 
-        <!-- FEED -->
         <main class="mexa-feed">
 
-          <!-- STORIES -->
           <section class="mexa-card mexa-stories">
 
             <h3>Stories</h3>
@@ -116,39 +140,58 @@ async function loadHome() {
 
           </section>
 
-          <!-- CREATE POST -->
           <section class="mexa-card create-post">
 
             <div class="post-input">
-              <div class="default-avatar">M</div>
+
+              <div class="default-avatar">
+                M
+              </div>
 
               <input
                 type="text"
                 placeholder="Apa yang kamu pikirkan?"
               >
+
             </div>
 
             <div class="post-actions">
-              <button>📷 Foto</button>
-              <button>🎥 Video</button>
-              <button>😊 Perasaan</button>
+
+              <button type="button">
+                📷 Foto
+              </button>
+
+              <button type="button">
+                🎥 Video
+              </button>
+
+              <button type="button">
+                😊 Perasaan
+              </button>
+
             </div>
 
           </section>
 
-          <!-- SAMPLE POST -->
           <article class="mexa-card post">
 
             <div class="post-header">
 
-              <div class="post-avatar">M</div>
+              <div class="post-avatar">
+                M
+              </div>
 
               <div>
-                <strong>MEXA User</strong>
+                <strong>MEXA</strong>
                 <small>Baru saja</small>
               </div>
 
-              <button class="post-menu">⋯</button>
+              <button
+                type="button"
+                class="post-menu"
+              >
+                ⋯
+              </button>
 
             </div>
 
@@ -164,9 +207,19 @@ async function loadHome() {
             </div>
 
             <div class="post-buttons">
-              <button>👍 Like</button>
-              <button>💬 Comment</button>
-              <button>↗️ Share</button>
+
+              <button type="button">
+                👍 Like
+              </button>
+
+              <button type="button">
+                💬 Comment
+              </button>
+
+              <button type="button">
+                ↗️ Share
+              </button>
+
             </div>
 
           </article>
@@ -175,14 +228,21 @@ async function loadHome() {
 
             <div class="post-header">
 
-              <div class="post-avatar">A</div>
+              <div class="post-avatar">
+                A
+              </div>
 
               <div>
                 <strong>Andi</strong>
                 <small>1 jam lalu</small>
               </div>
 
-              <button class="post-menu">⋯</button>
+              <button
+                type="button"
+                class="post-menu"
+              >
+                ⋯
+              </button>
 
             </div>
 
@@ -191,16 +251,25 @@ async function loadHome() {
             </div>
 
             <div class="post-buttons">
-              <button>👍 Like</button>
-              <button>💬 Comment</button>
-              <button>↗️ Share</button>
+
+              <button type="button">
+                👍 Like
+              </button>
+
+              <button type="button">
+                💬 Comment
+              </button>
+
+              <button type="button">
+                ↗️ Share
+              </button>
+
             </div>
 
           </article>
 
         </main>
 
-        <!-- RIGHT SIDEBAR -->
         <aside class="mexa-right">
 
           <section class="mexa-card online-card">
@@ -234,11 +303,62 @@ async function loadHome() {
     </div>
   `;
 
-  document.getElementById("btn-logout").onclick = async () => {
-    await supabase.auth.signOut();
+  const logoutButton =
+    document.getElementById("btn-logout");
+
+  logoutButton.addEventListener("click", async () => {
+
+    logoutButton.disabled = true;
+    logoutButton.innerHTML = "⏳ <span>Logout...</span>";
+
+    const { error } =
+      await supabase.auth.signOut();
+
+    if (error) {
+      logoutButton.disabled = false;
+      logoutButton.innerHTML = "🚪 <span>Logout</span>";
+      alert("Gagal logout: " + error.message);
+      return;
+    }
+
     window.location.href = "./login.html";
-  };
+  });
+}
+
+async function loadHome() {
+
+  if (!app) {
+    console.error("Elemen #mexa-app tidak ditemukan.");
+    return;
+  }
+
+  try {
+
+    const {
+      data: { session },
+      error
+    } = await supabase.auth.getSession();
+
+    if (error) {
+      console.error("Session error:", error);
+
+      renderHome();
+      return;
+    }
+
+    if (!session) {
+      window.location.href = "./login.html";
+      return;
+    }
+
+    renderHome();
+
+  } catch (error) {
+
+    console.error("MEXA Home error:", error);
+
+    renderHome();
+  }
 }
 
 loadHome();
-```
