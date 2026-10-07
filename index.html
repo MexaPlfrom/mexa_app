@@ -1,164 +1,440 @@
+```html
 <!DOCTYPE html>
 <html lang="id">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MEXA</title>
+
+  <title>MEXA — Social</title>
 
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
-      min-height: 100vh;
-      background:
-        radial-gradient(circle at top, #30498a 0%, #111827 48%, #070b14 100%);
-      color: #d9e2ff;
       font-family: Arial, sans-serif;
-      padding: 30px;
+      background: #eef2f7;
+      color: #172033;
     }
 
-    .box {
-      max-width: 600px;
-      margin: 40px auto;
-      padding: 25px;
-      border-radius: 18px;
-      background: rgba(17,24,39,.8);
-      border: 1px solid rgba(157,170,255,.25);
+    /* HEADER */
+    .mexa-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: 64px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      padding: 0 22px;
+
+      background: #ffffff;
+      border-bottom: 1px solid #dfe5ee;
     }
 
-    h1 {
-      margin-top: 0;
+    .mexa-logo {
+      font-size: 27px;
+      font-weight: 900;
+      letter-spacing: 2px;
+      color: #3f56d8;
     }
 
-    #status {
-      white-space: pre-wrap;
-      line-height: 1.6;
-      color: #9daaff;
+    .mexa-search {
+      width: 280px;
+      padding: 11px 16px;
+      border: 1px solid #dce2ec;
+      border-radius: 22px;
+      outline: none;
+      background: #f5f7fa;
+    }
+
+    .mexa-header-actions {
+      display: flex;
+      gap: 8px;
+    }
+
+    .mexa-header-actions button {
+      border: 0;
+      background: #f0f3f8;
+      border-radius: 10px;
+      padding: 10px 13px;
+      cursor: pointer;
+      font-weight: 600;
+      color: #26314a;
+    }
+
+    /* LAYOUT */
+    .mexa-layout {
+      width: 100%;
+      max-width: 1180px;
+      margin: 24px auto;
+      padding: 0 16px;
+
+      display: grid;
+      grid-template-columns: 220px minmax(0, 650px) 240px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    /* SIDEBAR */
+    .mexa-sidebar,
+    .mexa-rightbar {
+      background: #ffffff;
+      border: 1px solid #e1e6ee;
+      border-radius: 16px;
+      padding: 14px;
+    }
+
+    .mexa-menu {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .mexa-menu button {
+      border: 0;
+      background: transparent;
+      text-align: left;
+      padding: 12px;
+      border-radius: 10px;
+      cursor: pointer;
+      color: #354057;
+      font-weight: 600;
+    }
+
+    .mexa-menu button:hover {
+      background: #f1f4fa;
+    }
+
+    /* FEED */
+    .mexa-card {
+      background: #ffffff;
+      border: 1px solid #e1e6ee;
+      border-radius: 17px;
+      margin-bottom: 16px;
+      overflow: hidden;
+    }
+
+    .mexa-card-header {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      padding: 16px;
+    }
+
+    .mexa-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      background: #dce4ff;
+      color: #3e55c7;
+      font-weight: 800;
+    }
+
+    .mexa-user-name {
+      font-weight: 800;
+    }
+
+    .mexa-user-time {
+      margin-top: 3px;
+      color: #8791a5;
+      font-size: 12px;
+    }
+
+    .mexa-card-body {
+      padding: 0 16px 16px;
+      line-height: 1.5;
+    }
+
+    .mexa-card-actions {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid #edf0f5;
+    }
+
+    .mexa-card-actions button {
+      border: 0;
+      background: #ffffff;
+      padding: 12px;
+      cursor: pointer;
+      color: #59657b;
+      font-weight: 600;
+    }
+
+    .mexa-card-actions button:hover {
+      background: #f5f7fa;
+    }
+
+    /* CREATE POST */
+    .mexa-create {
+      padding: 16px;
+    }
+
+    .mexa-create textarea {
+      width: 100%;
+      min-height: 85px;
+      resize: vertical;
+
+      border: 1px solid #dce2ec;
+      border-radius: 13px;
+
+      padding: 13px;
+      font-family: inherit;
+      outline: none;
+    }
+
+    .mexa-create-footer {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 10px;
+    }
+
+    .mexa-post-button {
+      border: 0;
+      border-radius: 10px;
+      background: #4b61d3;
+      color: white;
+      padding: 11px 19px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    /* RIGHT */
+    .mexa-rightbar h3 {
+      margin: 4px 0 14px;
+      font-size: 16px;
+    }
+
+    .mexa-trend {
+      padding: 10px 0;
+      border-bottom: 1px solid #edf0f5;
+    }
+
+    .mexa-trend:last-child {
+      border-bottom: 0;
+    }
+
+    .mexa-trend small {
+      color: #8993a6;
+    }
+
+    /* MOBILE */
+    @media (max-width: 950px) {
+      .mexa-layout {
+        grid-template-columns: 1fr;
+        max-width: 700px;
+      }
+
+      .mexa-sidebar,
+      .mexa-rightbar {
+        display: none;
+      }
+
+      .mexa-search {
+        width: 180px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .mexa-header {
+        padding: 0 12px;
+      }
+
+      .mexa-search {
+        display: none;
+      }
+
+      .mexa-logo {
+        font-size: 23px;
+      }
+
+      .mexa-header-actions button {
+        padding: 9px;
+      }
+
+      .mexa-layout {
+        margin-top: 12px;
+        padding: 0 9px;
+      }
     }
   </style>
 </head>
 
 <body>
 
-  <div class="box">
-    <h1>MEXA</h1>
-    <div id="status">Memulai MEXA...</div>
+<header class="mexa-header">
+
+  <div class="mexa-logo">
+    MEXA
   </div>
 
-  <script type="module">
+  <input
+    class="mexa-search"
+    type="search"
+    placeholder="Cari di MEXA..."
+  >
 
-    const status = document.getElementById("status");
+  <div class="mexa-header-actions">
+    <button>🔔</button>
+    <button>✉️</button>
+    <button>👤</button>
+  </div>
 
-    function tampil(teks) {
-      status.textContent = teks;
-    }
+</header>
 
-    tampil("1. JavaScript berhasil dijalankan...");
 
-    try {
+<div class="mexa-layout">
 
-      const { createClient } =
-        await import(
-          "https://esm.sh/@supabase/supabase-js@2"
-        );
+  <!-- LEFT -->
+  <aside class="mexa-sidebar">
 
-      tampil("2. Supabase library berhasil dimuat...");
+    <nav class="mexa-menu">
 
-      const SUPABASE_URL =
-        "https://cnxmogmmeixhzjqzpzqf.supabase.co";
+      <button>🏠 Home</button>
+      <button>👤 Profil</button>
+      <button>👥 Teman</button>
+      <button>🔔 Notifikasi</button>
+      <button>💬 Pesan</button>
+      <button>⚙️ Pengaturan</button>
 
-      const SUPABASE_KEY =
-        "sb_publishable__dnVVEE7jYGfiEGaXbszuw_DHBeWA7Y";
+    </nav>
 
-      const supabase =
-        createClient(
-          SUPABASE_URL,
-          SUPABASE_KEY
-        );
+  </aside>
 
-      tampil("3. Supabase client berhasil dibuat...\n\nMemeriksa sesi login...");
 
-      const {
-        data,
-        error
-      } = await supabase.auth.getSession();
+  <!-- CENTER -->
+  <main>
 
-      if (error) {
-        tampil(
-          "ERROR GET SESSION:\n\n" +
-          error.message
-        );
-        throw error;
-      }
+    <!-- CREATE POST -->
+    <section class="mexa-card mexa-create">
 
-      if (!data.session) {
+      <textarea
+        placeholder="Apa yang ingin kamu bagikan?"
+      ></textarea>
 
-        tampil(
-          "TIDAK ADA SESI LOGIN.\n\n" +
-          "Berarti MEXA tidak menemukan sesi login di browser ini.\n\n" +
-          "Silakan login kembali melalui login.html."
-        );
+      <div class="mexa-create-footer">
 
-        setTimeout(() => {
-          window.location.href = "./login.html";
-        }, 3000);
+        <button class="mexa-post-button">
+          Posting
+        </button>
 
-        return;
-      }
+      </div>
 
-      tampil(
-        "4. LOGIN BERHASIL ✅\n\n" +
-        "User ID:\n" +
-        data.session.user.id +
-        "\n\nEmail:\n" +
-        (data.session.user.email || "-") +
-        "\n\nSekarang menghubungi Edge Function..."
-      );
+    </section>
 
-      const response =
-        await fetch(
-          `${SUPABASE_URL}/functions/v1/mexa-profile`,
-          {
-            method: "POST",
-            headers: {
-              "Authorization":
-                `Bearer ${data.session.access_token}`,
 
-              "apikey":
-                SUPABASE_KEY,
+    <!-- POST 1 -->
+    <article class="mexa-card">
 
-              "Content-Type":
-                "application/json"
-            },
-            body: JSON.stringify({})
-          }
-        );
+      <div class="mexa-card-header">
 
-      const result =
-        await response.json();
+        <div class="mexa-avatar">
+          M
+        </div>
 
-      if (!response.ok) {
-        tampil(
-          "EDGE FUNCTION ERROR:\n\n" +
-          JSON.stringify(result, null, 2)
-        );
-        return;
-      }
+        <div>
+          <div class="mexa-user-name">
+            MEXA User
+          </div>
 
-      tampil(
-        "5. EDGE FUNCTION BERHASIL ✅\n\n" +
-        JSON.stringify(result, null, 2)
-      );
+          <div class="mexa-user-time">
+            Baru saja
+          </div>
+        </div>
 
-    } catch (error) {
+      </div>
 
-      tampil(
-        "ERROR:\n\n" +
-        (error?.message || String(error))
-      );
+      <div class="mexa-card-body">
+        Selamat datang di MEXA! 🎉
+        <br>
+        Connect. Share. Grow.
+      </div>
 
-    }
+      <div class="mexa-card-actions">
 
-  </script>
+        <button>👍 Suka</button>
+        <button>💬 Komentar</button>
+        <button>↗️ Bagikan</button>
+
+      </div>
+
+    </article>
+
+
+    <!-- POST 2 -->
+    <article class="mexa-card">
+
+      <div class="mexa-card-header">
+
+        <div class="mexa-avatar">
+          A
+        </div>
+
+        <div>
+          <div class="mexa-user-name">
+            MEXA Community
+          </div>
+
+          <div class="mexa-user-time">
+            1 jam lalu
+          </div>
+        </div>
+
+      </div>
+
+      <div class="mexa-card-body">
+        Ini adalah tampilan awal feed MEXA.
+      </div>
+
+      <div class="mexa-card-actions">
+
+        <button>👍 Suka</button>
+        <button>💬 Komentar</button>
+        <button>↗️ Bagikan</button>
+
+      </div>
+
+    </article>
+
+  </main>
+
+
+  <!-- RIGHT -->
+  <aside class="mexa-rightbar">
+
+    <h3>Trending MEXA</h3>
+
+    <div class="mexa-trend">
+      <strong>#MEXA</strong>
+      <br>
+      <small>Topik populer</small>
+    </div>
+
+    <div class="mexa-trend">
+      <strong>#Community</strong>
+      <br>
+      <small>Yang sedang dibicarakan</small>
+    </div>
+
+    <div class="mexa-trend">
+      <strong>#Share</strong>
+      <br>
+      <small>Trending sekarang</small>
+    </div>
+
+  </aside>
+
+</div>
 
 </body>
 </html>
+```
