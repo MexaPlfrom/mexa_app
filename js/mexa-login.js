@@ -13,11 +13,32 @@ export const supabase = createClient(
 
 const app = document.getElementById("mexa-app");
 
+function mexaLogo() {
+  return `
+    <div class="mexa-logo" aria-label="MEXA">
+
+      <span class="logo-m">M</span>
+
+      <span class="logo-e" aria-label="E">
+        <i></i>
+        <i></i>
+        <i></i>
+      </span>
+
+      <span class="logo-x">X</span>
+
+      <span class="logo-a">A</span>
+
+    </div>
+  `;
+}
+
 function showLogin() {
   app.innerHTML = `
     <div class="mexa-login-card">
 
-      <div class="mexa-logo">MEXA</div>
+      ${mexaLogo()}
+
       <div class="mexa-subtitle">
         Connect. Share. Grow.
       </div>
@@ -60,7 +81,7 @@ function showRegister() {
   app.innerHTML = `
     <div class="mexa-login-card">
 
-      <div class="mexa-logo">MEXA</div>
+      ${mexaLogo()}
 
       <div class="mexa-subtitle">
         Buat akun MEXA kamu
@@ -217,43 +238,4 @@ async function forgotPassword() {
 }
 
 showLogin();
-
-.mexa-logo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 7px;
-  font-family: Arial, sans-serif;
-  font-size: 42px;
-  font-weight: 900;
-  letter-spacing: 1px;
-}
-
-.logo-ma {
-  color: #7c9cff;
-}
-
-.logo-x {
-  color: #ffffff;
-  transform: rotate(-7deg);
-}
-
-.logo-e {
-  width: 30px;
-  height: 34px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.logo-e i {
-  display: block;
-  width: 30px;
-  height: 7px;
-  border-radius: 4px;
-  background: #35e0c2;
-}
-
-.logo-e i:nth-child(2) {
-  width: 22px;
-}
+```
