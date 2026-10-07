@@ -3,297 +3,160 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MEXA Social App</title>
+  <title>MEXA</title>
 
   <style>
-    * {
-      box-sizing: border-box;
-    }
-
     body {
       margin: 0;
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at top, #30498a 0%, #111827 48%, #070b14 100%);
+      color: #d9e2ff;
       font-family: Arial, sans-serif;
-      color: #d9e2ff;
-      background: #070b14;
+      padding: 30px;
     }
 
-    #mexa-app {
-      min-height: 100vh;
+    .box {
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 25px;
+      border-radius: 18px;
+      background: rgba(17,24,39,.8);
+      border: 1px solid rgba(157,170,255,.25);
     }
 
-    .home {
-      min-height: 100vh;
-      background:
-        radial-gradient(
-          circle at top,
-          #30498a 0%,
-          #111827 48%,
-          #070b14 100%
-        );
+    h1 {
+      margin-top: 0;
     }
 
-    .topbar {
-      height: 64px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 22px;
-      background: rgba(7, 11, 20, .72);
-      border-bottom: 1px solid rgba(157, 170, 255, .18);
-      backdrop-filter: blur(14px);
-    }
-
-    .mexa-logo {
-      display: flex;
-      align-items: center;
-      gap: 7px;
-      font-size: 30px;
-      font-weight: 900;
-      letter-spacing: 1px;
-      line-height: 1;
-    }
-
-    .logo-m,
-    .logo-a {
-      color: #d9e2ff;
-      text-shadow: 0 0 18px rgba(150, 170, 255, .35);
-    }
-
-    .logo-x {
+    #status {
+      white-space: pre-wrap;
+      line-height: 1.6;
       color: #9daaff;
-      text-shadow: 0 0 18px rgba(125, 140, 255, .45);
-    }
-
-    .logo-e {
-      width: 21px;
-      height: 26px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      padding: 1px 0;
-    }
-
-    .logo-e i {
-      display: block;
-      width: 21px;
-      height: 4px;
-      border-radius: 4px;
-      background: #d9e2ff;
-      box-shadow: 0 0 9px rgba(150, 170, 255, .3);
-    }
-
-    .logo-e i:nth-child(2) {
-      width: 15px;
-    }
-
-    .profile-name {
-      font-size: 14px;
-      color: #d9e2ff;
-    }
-
-    .content {
-      max-width: 1100px;
-      margin: auto;
-      padding: 30px 20px;
-    }
-
-    .welcome {
-      padding: 28px;
-      border-radius: 20px;
-      background: rgba(17, 24, 39, .72);
-      border: 1px solid rgba(157, 170, 255, .18);
-      box-shadow: 0 15px 40px rgba(0, 0, 0, .25);
-    }
-
-    .welcome h1 {
-      margin: 0 0 8px;
-      font-size: 28px;
-    }
-
-    .welcome p {
-      margin: 0;
-      color: #9daaff;
-    }
-
-    .logout {
-      margin-top: 20px;
-      padding: 11px 18px;
-      border: 0;
-      border-radius: 10px;
-      cursor: pointer;
-      background: #9daaff;
-      color: #070b14;
-      font-weight: 700;
-    }
-
-    .error {
-      padding: 40px;
-      text-align: center;
-      color: #d9e2ff;
-      background:
-        radial-gradient(
-          circle at top,
-          #30498a 0%,
-          #111827 48%,
-          #070b14 100%
-        );
-      min-height: 100vh;
     }
   </style>
 </head>
 
 <body>
 
-  <div id="mexa-app">
-    <div class="error">Memuat MEXA...</div>
+  <div class="box">
+    <h1>MEXA</h1>
+    <div id="status">Memulai MEXA...</div>
   </div>
 
   <script type="module">
 
-    import { createClient } from
-      "https://esm.sh/@supabase/supabase-js@2";
+    const status = document.getElementById("status");
 
-    const SUPABASE_URL =
-      "https://cnxmogmmeixhzjqzpzqf.supabase.co";
+    function tampil(teks) {
+      status.textContent = teks;
+    }
 
-    const SUPABASE_KEY =
-      "sb_publishable__dnVVEE7jYGfiEGaXbszuw_DHBeWA7Y";
+    tampil("1. JavaScript berhasil dijalankan...");
 
-    const supabase = createClient(
-      SUPABASE_URL,
-      SUPABASE_KEY
-    );
+    try {
 
-    const app =
-      document.getElementById("mexa-app");
+      const { createClient } =
+        await import(
+          "https://esm.sh/@supabase/supabase-js@2"
+        );
 
-    async function loadHome() {
+      tampil("2. Supabase library berhasil dimuat...");
+
+      const SUPABASE_URL =
+        "https://cnxmogmmeixhzjqzpzqf.supabase.co";
+
+      const SUPABASE_KEY =
+        "sb_publishable__dnVVEE7jYGfiEGaXbszuw_DHBeWA7Y";
+
+      const supabase =
+        createClient(
+          SUPABASE_URL,
+          SUPABASE_KEY
+        );
+
+      tampil("3. Supabase client berhasil dibuat...\n\nMemeriksa sesi login...");
 
       const {
-        data: { session }
+        data,
+        error
       } = await supabase.auth.getSession();
 
-      if (!session) {
-        window.location.href = "./login.html";
+      if (error) {
+        tampil(
+          "ERROR GET SESSION:\n\n" +
+          error.message
+        );
+        throw error;
+      }
+
+      if (!data.session) {
+
+        tampil(
+          "TIDAK ADA SESI LOGIN.\n\n" +
+          "Berarti MEXA tidak menemukan sesi login di browser ini.\n\n" +
+          "Silakan login kembali melalui login.html."
+        );
+
+        setTimeout(() => {
+          window.location.href = "./login.html";
+        }, 3000);
+
         return;
       }
 
-      const user = session.user;
+      tampil(
+        "4. LOGIN BERHASIL ✅\n\n" +
+        "User ID:\n" +
+        data.session.user.id +
+        "\n\nEmail:\n" +
+        (data.session.user.email || "-") +
+        "\n\nSekarang menghubungi Edge Function..."
+      );
 
-      let displayName =
-        user.user_metadata?.display_name ||
-        user.user_metadata?.username ||
-        "MEXA User";
+      const response =
+        await fetch(
+          `${SUPABASE_URL}/functions/v1/mexa-profile`,
+          {
+            method: "POST",
+            headers: {
+              "Authorization":
+                `Bearer ${data.session.access_token}`,
 
-      try {
+              "apikey":
+                SUPABASE_KEY,
 
-        const response =
-          await fetch(
-            `${SUPABASE_URL}/functions/v1/mexa-profile`,
-            {
-              method: "POST",
-              headers: {
-                "Authorization":
-                  `Bearer ${session.access_token}`,
-
-                "apikey":
-                  SUPABASE_KEY,
-
-                "Content-Type":
-                  "application/json"
-              },
-              body: JSON.stringify({})
-            }
-          );
-
-        const result =
-          await response.json();
-
-        if (
-          result.success &&
-          result.user
-        ) {
-          displayName =
-            result.user.display_name ||
-            result.user.username ||
-            displayName;
-        }
-
-      } catch (error) {
-        console.log(
-          "mexa-profile:",
-          error
+              "Content-Type":
+                "application/json"
+            },
+            body: JSON.stringify({})
+          }
         );
+
+      const result =
+        await response.json();
+
+      if (!response.ok) {
+        tampil(
+          "EDGE FUNCTION ERROR:\n\n" +
+          JSON.stringify(result, null, 2)
+        );
+        return;
       }
 
-      app.innerHTML = `
+      tampil(
+        "5. EDGE FUNCTION BERHASIL ✅\n\n" +
+        JSON.stringify(result, null, 2)
+      );
 
-        <div class="home">
+    } catch (error) {
 
-          <header class="topbar">
+      tampil(
+        "ERROR:\n\n" +
+        (error?.message || String(error))
+      );
 
-            <div class="mexa-logo"
-                 aria-label="MEXA">
-
-              <span class="logo-m">M</span>
-
-              <span class="logo-e"
-                    aria-label="E">
-                <i></i>
-                <i></i>
-                <i></i>
-              </span>
-
-              <span class="logo-x">X</span>
-
-              <span class="logo-a">A</span>
-
-            </div>
-
-            <div class="profile-name">
-              ${displayName}
-            </div>
-
-          </header>
-
-          <main class="content">
-
-            <section class="welcome">
-
-              <h1>
-                Selamat datang, ${displayName} 👋
-              </h1>
-
-              <p>
-                MEXA Social — Connect. Share. Grow.
-              </p>
-
-              <button
-                id="btn-logout"
-                class="logout">
-                Logout
-              </button>
-
-            </section>
-
-          </main>
-
-        </div>
-
-      `;
-
-      document
-        .getElementById("btn-logout")
-        .onclick = async () => {
-
-          await supabase.auth.signOut();
-
-          window.location.href =
-            "./login.html";
-        };
     }
-
-    loadHome();
 
   </script>
 
