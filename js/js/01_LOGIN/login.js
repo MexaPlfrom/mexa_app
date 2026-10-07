@@ -4,189 +4,228 @@ const SUPABASE_URL = "https://cnxmogmmeixhzjqzpzqf.supabase.co";
 const SUPABASE_KEY = "sb_publishable__dnVVEE7jYGfiEGaXbszuw_DHBeWA7Y";
 
 export const supabase = createClient(
-  SUPABASE_URL,
-  SUPABASE_KEY
+SUPABASE_URL,
+SUPABASE_KEY
 );
 
 const app = document.getElementById("mexa-app");
 
 function showLogin() {
-  app.innerHTML = `
-    <div>
-      <h1>MEXA</h1>
+app.innerHTML = ` <div class="mexa-login-card"> <div class="mexa-logo">MEXA</div> <div class="mexa-subtitle">Connect. Share. Grow.</div>
 
-      <input id="login-email" type="email" placeholder="Email">
+```
+  <input
+    id="login-email"
+    type="email"
+    placeholder="Email"
+  >
 
-      <input id="login-password" type="password" placeholder="Password">
+  <input
+    id="login-password"
+    type="password"
+    placeholder="Password"
+  >
 
-      <button id="btn-login">Login</button>
+  <button id="btn-login">
+    Login
+  </button>
 
-      <button id="btn-register">Register</button>
+  <button id="btn-register" class="mexa-secondary">
+    Buat Akun Baru
+  </button>
 
-      <button id="btn-forgot">Lupa Password</button>
+  <button id="btn-forgot" class="mexa-secondary">
+    Lupa Password
+  </button>
 
-      <p id="login-message"></p>
-    </div>
-  `;
+  <p id="login-message"></p>
+</div>
+```
 
-  document.getElementById("btn-login").onclick = login;
-  document.getElementById("btn-register").onclick = showRegister;
-  document.getElementById("btn-forgot").onclick = forgotPassword;
+`;
+
+document.getElementById("btn-login").onclick = login;
+document.getElementById("btn-register").onclick = showRegister;
+document.getElementById("btn-forgot").onclick = forgotPassword;
 }
 
 function showRegister() {
-  app.innerHTML = `
-    <div>
-      <h1>Daftar MEXA</h1>
+app.innerHTML = ` <div class="mexa-login-card"> <div class="mexa-logo">MEXA</div> <div class="mexa-subtitle">Buat akun MEXA kamu</div>
 
-      <input id="register-name" type="text" placeholder="Nama panggilan">
+```
+  <input
+    id="register-name"
+    type="text"
+    placeholder="Nama panggilan"
+  >
 
-      <input id="register-username" type="text" placeholder="Username">
+  <input
+    id="register-username"
+    type="text"
+    placeholder="Username"
+  >
 
-      <input id="register-email" type="email" placeholder="Email">
+  <input
+    id="register-email"
+    type="email"
+    placeholder="Email"
+  >
 
-      <input id="register-password" type="password" placeholder="Password">
+  <input
+    id="register-password"
+    type="password"
+    placeholder="Password"
+  >
 
-      <button id="btn-create-account">Buat Akun</button>
+  <button id="btn-create-account">
+    Buat Akun
+  </button>
 
-      <button id="btn-back-login">Kembali Login</button>
+  <button id="btn-back-login" class="mexa-secondary">
+    Kembali ke Login
+  </button>
 
-      <p id="register-message"></p>
-    </div>
-  `;
+  <p id="register-message"></p>
+</div>
+```
 
-  document.getElementById("btn-create-account").onclick = register;
-  document.getElementById("btn-back-login").onclick = showLogin;
+`;
+
+document.getElementById("btn-create-account").onclick = register;
+document.getElementById("btn-back-login").onclick = showLogin;
 }
 
 async function login() {
-  const email = document.getElementById("login-email").value.trim();
-  const password = document.getElementById("login-password").value;
-  const message = document.getElementById("login-message");
+const email = document.getElementById("login-email").value.trim();
+const password = document.getElementById("login-password").value;
+const message = document.getElementById("login-message");
 
-  if (!email || !password) {
-    message.textContent = "Email dan password wajib diisi.";
-    return;
-  }
+if (!email || !password) {
+message.textContent = "Email dan password wajib diisi.";
+return;
+}
 
-  message.textContent = "Sedang login...";
+message.textContent = "Sedang login...";
 
-  const { error } = await supabase.auth.signInWithPassword({
-    email,
-    password
-  });
+const { error } = await supabase.auth.signInWithPassword({
+email,
+password
+});
 
-  if (error) {
-    message.textContent = error.message;
-    return;
-  }
+if (error) {
+message.textContent = error.message;
+return;
+}
 
-  message.textContent = "Login berhasil.";
+message.textContent = "Login berhasil.";
 
-  window.dispatchEvent(
-    new CustomEvent("mexa:login-success")
-  );
+window.dispatchEvent(
+new CustomEvent("mexa:login-success")
+);
 }
 
 async function register() {
-  const displayName =
-    document.getElementById("register-name").value.trim();
+const displayName =
+document.getElementById("register-name").value.trim();
 
-  const username =
-    document.getElementById("register-username").value.trim();
+const username =
+document.getElementById("register-username").value.trim();
 
-  const email =
-    document.getElementById("register-email").value.trim();
+const email =
+document.getElementById("register-email").value.trim();
 
-  const password =
-    document.getElementById("register-password").value;
+const password =
+document.getElementById("register-password").value;
 
-  const message =
-    document.getElementById("register-message");
+const message =
+document.getElementById("register-message");
 
-  if (!displayName || !username || !email || !password) {
-    message.textContent = "Semua data wajib diisi.";
-    return;
-  }
+if (!displayName || !username || !email || !password) {
+message.textContent = "Semua data wajib diisi.";
+return;
+}
 
-  message.textContent = "Membuat akun...";
+message.textContent = "Membuat akun...";
 
-  const { data, error } = await supabase.auth.signUp({
-    email,
-    password,
-    options: {
-      data: {
-        display_name: displayName,
-        username: username
-      }
-    }
-  });
+const { data, error } = await supabase.auth.signUp({
+email,
+password,
+options: {
+data: {
+display_name: displayName,
+username: username
+}
+}
+});
 
-  if (error) {
-    message.textContent = error.message;
-    return;
-  }
+if (error) {
+message.textContent = error.message;
+return;
+}
 
-  if (data.session) {
-    message.textContent = "Akun berhasil dibuat.";
+if (data.session) {
+message.textContent = "Akun berhasil dibuat.";
 
-    window.dispatchEvent(
-      new CustomEvent("mexa:login-success")
-    );
-  } else {
-    message.textContent =
-      "Akun berhasil dibuat. Silakan cek email untuk verifikasi.";
-  }
+```
+window.dispatchEvent(
+  new CustomEvent("mexa:login-success")
+);
+```
+
+} else {
+message.textContent =
+"Akun berhasil dibuat. Silakan cek email untuk verifikasi.";
+}
 }
 
 async function forgotPassword() {
-  const email =
-    document.getElementById("login-email").value.trim();
+const email =
+document.getElementById("login-email").value.trim();
 
-  const message =
-    document.getElementById("login-message");
+const message =
+document.getElementById("login-message");
 
-  if (!email) {
-    message.textContent =
-      "Masukkan email terlebih dahulu.";
-    return;
-  }
+if (!email) {
+message.textContent =
+"Masukkan email terlebih dahulu.";
+return;
+}
 
-  message.textContent =
-    "Mengirim link reset password...";
+message.textContent =
+"Mengirim link reset password...";
 
-  const { error } =
-    await supabase.auth.resetPasswordForEmail(email);
+const { error } =
+await supabase.auth.resetPasswordForEmail(email);
 
-  if (error) {
-    message.textContent = error.message;
-    return;
-  }
+if (error) {
+message.textContent = error.message;
+return;
+}
 
-  message.textContent =
-    "Link reset password sudah dikirim ke email.";
+message.textContent =
+"Link reset password sudah dikirim ke email.";
 }
 
 async function checkSession() {
-  const {
-    data: { session }
-  } = await supabase.auth.getSession();
+const {
+data: { session }
+} = await supabase.auth.getSession();
 
-  if (session) {
-    window.dispatchEvent(
-      new CustomEvent("mexa:login-success")
-    );
-  } else {
-    showLogin();
-  }
+if (session) {
+window.dispatchEvent(
+new CustomEvent("mexa:login-success")
+);
+} else {
+showLogin();
+}
 }
 
 supabase.auth.onAuthStateChange((event, session) => {
-  if (event === "SIGNED_IN" && session) {
-    window.dispatchEvent(
-      new CustomEvent("mexa:login-success")
-    );
-  }
+if (event === "SIGNED_IN" && session) {
+window.dispatchEvent(
+new CustomEvent("mexa:login-success")
+);
+}
 });
 
 checkSession();
