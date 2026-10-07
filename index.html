@@ -1,806 +1,579 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>MEXA</title>
+  <title>MEXA — Beranda</title>
 
-<style>
-*{
-  box-sizing:border-box;
-}
-
-body{
-  margin:0;
-  font-family:Arial,Helvetica,sans-serif;
-  background:#f3f6ff;
-  color:#17213d;
-}
-
-/* ================= LOGO ================= */
-
-.mexa-logo{
-  display:flex;
-  align-items:center;
-  gap:3px;
-  font-size:30px;
-  font-weight:900;
-  letter-spacing:1px;
-  color:#3158e8;
-}
-
-.logo-e{
-  width:24px;
-  height:27px;
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
-}
-
-.logo-e span{
-  height:5px;
-  border-radius:4px;
-  background:linear-gradient(90deg,#8d5cff,#3d72ff);
-}
-
-.logo-e span:nth-child(1){
-  width:24px;
-}
-
-.logo-e span:nth-child(2){
-  width:17px;
-}
-
-.logo-e span:nth-child(3){
-  width:24px;
-}
-
-/* ================= HEADER ================= */
-
-.header{
-  position:sticky;
-  top:0;
-  z-index:50;
-  height:68px;
-  background:rgba(255,255,255,.95);
-  backdrop-filter:blur(16px);
-  border-bottom:1px solid #e1e6f3;
-  display:flex;
-  align-items:center;
-  padding:0 22px;
-  gap:25px;
-}
-
-.search{
-  flex:1;
-  max-width:430px;
-  margin:auto;
-  position:relative;
-}
-
-.search input{
-  width:100%;
-  border:0;
-  outline:0;
-  background:#f0f3fb;
-  padding:13px 18px 13px 43px;
-  border-radius:25px;
-  font-size:14px;
-}
-
-.search-icon{
-  position:absolute;
-  left:17px;
-  top:11px;
-  font-size:18px;
-}
-
-.header-actions{
-  display:flex;
-  gap:8px;
-}
-
-.icon-btn{
-  width:40px;
-  height:40px;
-  border:0;
-  border-radius:50%;
-  background:#f1f4fb;
-  cursor:pointer;
-  font-size:17px;
-}
-
-/* ================= LAYOUT ================= */
-
-.layout{
-  max-width:1280px;
-  margin:auto;
-  padding:22px 18px;
-  display:grid;
-  grid-template-columns:220px minmax(0,650px) 270px;
-  gap:22px;
-}
-
-/* ================= SIDEBAR ================= */
-
-.sidebar{
-  position:sticky;
-  top:90px;
-  height:max-content;
-  background:#fff;
-  border:1px solid #e1e6f3;
-  border-radius:18px;
-  padding:13px;
-}
-
-.menu{
-  display:flex;
-  flex-direction:column;
-  gap:5px;
-}
-
-.menu button{
-  border:0;
-  background:transparent;
-  padding:13px;
-  border-radius:12px;
-  text-align:left;
-  font-size:14px;
-  font-weight:600;
-  color:#46516d;
-  cursor:pointer;
-}
-
-.menu button:hover,
-.menu .active{
-  background:#edf1ff;
-  color:#3158e8;
-}
-
-/* ================= CARD ================= */
-
-.card{
-  background:#fff;
-  border:1px solid #e1e6f3;
-  border-radius:18px;
-  margin-bottom:16px;
-  overflow:hidden;
-  box-shadow:0 5px 20px rgba(41,66,130,.04);
-}
-
-/* ================= CREATE ================= */
-
-.create{
-  padding:16px;
-}
-
-.create-top{
-  display:flex;
-  gap:12px;
-}
-
-.avatar{
-  width:43px;
-  height:43px;
-  flex:none;
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:linear-gradient(135deg,#476cff,#895cff);
-  color:white;
-  font-weight:800;
-}
-
-.create textarea{
-  flex:1;
-  min-height:70px;
-  border:0;
-  outline:0;
-  resize:none;
-  font-family:inherit;
-  font-size:15px;
-  padding:8px;
-  background:#f7f8fc;
-  border-radius:13px;
-}
-
-.create-tools{
-  margin-top:13px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
-
-.tools{
-  display:flex;
-  gap:5px;
-}
-
-.tool{
-  border:0;
-  background:#f3f5fb;
-  border-radius:10px;
-  padding:9px 12px;
-  cursor:pointer;
-}
-
-.post-btn{
-  border:0;
-  background:linear-gradient(135deg,#396cff,#754cff);
-  color:white;
-  font-weight:700;
-  padding:10px 20px;
-  border-radius:11px;
-  cursor:pointer;
-}
-
-/* ================= POST ================= */
-
-.post-header{
-  display:flex;
-  align-items:center;
-  gap:11px;
-  padding:16px;
-}
-
-.user-name{
-  font-weight:800;
-  font-size:14px;
-}
-
-.user-time{
-  color:#8992a8;
-  font-size:12px;
-  margin-top:3px;
-}
-
-.more{
-  margin-left:auto;
-  border:0;
-  background:none;
-  font-size:20px;
-  cursor:pointer;
-}
-
-.post-text{
-  padding:0 16px 14px;
-  line-height:1.55;
-  font-size:14px;
-}
-
-.post-image{
-  width:100%;
-  height:320px;
-  object-fit:cover;
-  display:block;
-  background:#e9edfa;
-}
-
-.post-stats{
-  padding:11px 16px;
-  color:#7d879d;
-  font-size:13px;
-  display:flex;
-  justify-content:space-between;
-}
-
-.post-actions{
-  border-top:1px solid #edf0f6;
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-}
-
-.post-actions button{
-  border:0;
-  background:white;
-  padding:13px;
-  color:#66718a;
-  cursor:pointer;
-  font-weight:600;
-}
-
-.post-actions button:hover{
-  background:#f5f7fc;
-  color:#3158e8;
-}
-
-/* ================= RIGHT ================= */
-
-.right-card{
-  background:#fff;
-  border:1px solid #e1e6f3;
-  border-radius:18px;
-  padding:16px;
-  margin-bottom:16px;
-}
-
-.right-card h3{
-  margin:2px 0 15px;
-  font-size:16px;
-}
-
-.trend{
-  padding:11px 0;
-  border-bottom:1px solid #edf0f5;
-}
-
-.trend:last-child{
-  border-bottom:0;
-}
-
-.trend small{
-  color:#8a93a8;
-}
-
-/* ================= PROFILE ================= */
-
-.profile-mini{
-  text-align:center;
-}
-
-.profile-mini .avatar{
-  margin:auto;
-  width:60px;
-  height:60px;
-  font-size:20px;
-}
-
-.profile-mini h3{
-  margin:10px 0 3px;
-}
-
-.profile-mini p{
-  margin:0;
-  color:#8790a5;
-  font-size:12px;
-}
-
-.profile-btn{
-  width:100%;
-  margin-top:13px;
-  border:0;
-  border-radius:10px;
-  padding:10px;
-  background:#edf1ff;
-  color:#3158e8;
-  font-weight:700;
-}
-
-/* ================= MOBILE NAV ================= */
-
-.bottom-nav{
-  display:none;
-}
-
-/* ================= MOBILE ================= */
-
-@media(max-width:1000px){
-
-  .layout{
-    grid-template-columns:1fr;
-    max-width:700px;
-  }
-
-  .sidebar,
-  .right-column{
-    display:none;
-  }
-
-  .header{
-    padding:0 13px;
-    gap:10px;
-  }
-
-  .search{
-    max-width:none;
-  }
-}
-
-@media(max-width:600px){
-
-  .header{
-    height:60px;
-  }
-
-  .mexa-logo{
-    font-size:24px;
-  }
-
-  .search{
-    display:none;
-  }
-
-  .header-actions .icon-btn:nth-child(2){
-    display:none;
-  }
-
-  .layout{
-    padding:10px 8px 80px;
-  }
-
-  .card{
-    border-radius:15px;
-  }
-
-  .post-image{
-    height:260px;
-  }
-
-  .bottom-nav{
-    position:fixed;
-    display:flex;
-    left:0;
-    right:0;
-    bottom:0;
-    height:62px;
-    background:white;
-    border-top:1px solid #e1e6f3;
-    z-index:100;
-    justify-content:space-around;
-    align-items:center;
-  }
-
-  .bottom-nav button{
-    border:0;
-    background:none;
-    font-size:19px;
-    color:#69748e;
-  }
-
-  .bottom-nav .plus{
-    width:45px;
-    height:45px;
-    border-radius:50%;
-    background:linear-gradient(135deg,#396cff,#754cff);
-    color:white;
-    font-size:23px;
-    margin-top:-20px;
-    box-shadow:0 8px 20px rgba(63,91,230,.35);
-  }
-}
-</style>
+  <link rel="stylesheet" href="./css/home.css">
 </head>
 
 <body>
 
-<!-- HEADER -->
+  <!-- HEADER -->
+  <header class="mexa-header">
 
-<header class="header">
+    <div class="mexa-brand">
+      <span>M</span>
 
-  <div class="mexa-logo" aria-label="MEXA">
-    <span>M</span>
+      <!-- E = 3 strip -->
+      <span class="mexa-e">
+        <i></i>
+        <i></i>
+        <i></i>
+      </span>
 
-    <span class="logo-e">
-      <span></span>
-      <span></span>
-      <span></span>
-    </span>
+      <span class="mexa-x">X</span>
+      <span>A</span>
+    </div>
 
-    <span>X</span>
-    <span>A</span>
-  </div>
+    <div class="mexa-search">
+      <span>⌕</span>
+      <input
+        id="searchInput"
+        type="search"
+        placeholder="Cari orang, postingan, atau topik..."
+      >
+    </div>
 
-  <div class="search">
-    <span class="search-icon">🔎</span>
-    <input
-      type="search"
-      placeholder="Cari orang, postingan, atau topik..."
-    >
-  </div>
+    <div class="mexa-header-actions">
+      <button id="notificationBtn" title="Notifikasi">♧</button>
+      <button id="messageBtn" title="Pesan">✉</button>
+      <button id="profileBtn" title="Profil">●</button>
+    </div>
 
-  <div class="header-actions">
-    <button class="icon-btn">🔔</button>
-    <button class="icon-btn">✉️</button>
-    <button class="icon-btn">👤</button>
-  </div>
-
-</header>
-
-
-<!-- MAIN -->
-
-<div class="layout">
-
-  <!-- SIDEBAR -->
-
-  <aside class="sidebar">
-
-    <nav class="menu">
-
-      <button class="active">🏠 Beranda</button>
-      <button>🔎 Jelajah</button>
-      <button>👤 Profil</button>
-      <button>👥 Teman</button>
-      <button>💬 Pesan</button>
-      <button>🔔 Notifikasi</button>
-      <button>📌 Postingan Saya</button>
-      <button>⚙️ Pengaturan</button>
-
-    </nav>
-
-  </aside>
+  </header>
 
 
-  <!-- FEED -->
+  <!-- APP -->
+  <div class="mexa-app">
 
-  <main>
+    <!-- LEFT SIDEBAR -->
+    <aside class="mexa-sidebar">
 
-    <!-- CREATE POST -->
+      <div class="mexa-sidebar-profile">
 
-    <section class="card create">
+        <div class="mexa-avatar large">
+          M
+        </div>
 
-      <div class="create-top">
-
-        <div class="avatar">M</div>
-
-        <textarea
-          placeholder="Apa yang kamu pikirkan?"
-        ></textarea>
+        <strong>MEXA User</strong>
+        <small>@mexauser</small>
 
       </div>
 
-      <div class="create-tools">
+      <nav class="mexa-menu">
 
-        <div class="tools">
+        <button class="active" data-page="home">
+          <span>⌂</span>
+          <label>Beranda</label>
+        </button>
 
-          <button class="tool">📷 Foto</button>
-          <button class="tool">🎥 Video</button>
-          <button class="tool">📍 Lokasi</button>
-          <button class="tool">👥 Tag</button>
+        <button data-page="explore">
+          <span>⌕</span>
+          <label>Jelajah</label>
+        </button>
+
+        <button data-page="profile">
+          <span>●</span>
+          <label>Profil</label>
+        </button>
+
+        <button data-page="friends">
+          <span>♧</span>
+          <label>Teman</label>
+        </button>
+
+        <button data-page="messages">
+          <span>✉</span>
+          <label>Pesan</label>
+        </button>
+
+        <button data-page="notifications">
+          <span>♧</span>
+          <label>Notifikasi</label>
+        </button>
+
+        <button data-page="posts">
+          <span>▣</span>
+          <label>Postingan Saya</label>
+        </button>
+
+        <button data-page="settings">
+          <span>⚙</span>
+          <label>Pengaturan</label>
+        </button>
+
+      </nav>
+
+    </aside>
+
+
+    <!-- CENTER -->
+    <main class="mexa-feed">
+
+      <!-- STORIES -->
+      <section class="mexa-stories">
+
+        <div class="story add-story">
+          <div class="story-avatar plus">+</div>
+          <span>Buat Cerita</span>
+        </div>
+
+        <div class="story">
+          <div class="story-avatar gradient">R</div>
+          <span>Rina</span>
+        </div>
+
+        <div class="story">
+          <div class="story-avatar gradient">B</div>
+          <span>Budi</span>
+        </div>
+
+        <div class="story">
+          <div class="story-avatar gradient">S</div>
+          <span>Sari</span>
+        </div>
+
+        <div class="story">
+          <div class="story-avatar gradient">A</div>
+          <span>Andi</span>
+        </div>
+
+      </section>
+
+
+      <!-- CREATE POST -->
+      <section class="mexa-card mexa-create-post">
+
+        <div class="create-row">
+
+          <div class="mexa-avatar">
+            M
+          </div>
+
+          <button
+            id="openPostBtn"
+            class="post-input"
+          >
+            Apa yang kamu pikirkan?
+          </button>
 
         </div>
 
-        <button class="post-btn">
-          Posting
+        <div class="create-options">
+
+          <button data-create="photo">
+            <span>▣</span>
+            Foto
+          </button>
+
+          <button data-create="video">
+            <span>▶</span>
+            Video
+          </button>
+
+          <button data-create="location">
+            <span>⌖</span>
+            Lokasi
+          </button>
+
+          <button data-create="tag">
+            <span>@</span>
+            Tag
+          </button>
+
+        </div>
+
+      </section>
+
+
+      <!-- POST -->
+      <article class="mexa-card mexa-post">
+
+        <div class="post-header">
+
+          <div class="mexa-avatar">
+            M
+          </div>
+
+          <div class="post-user">
+
+            <strong>MEXA User</strong>
+
+            <small>
+              Baru saja · Publik
+            </small>
+
+          </div>
+
+          <button class="post-more">
+            ⋯
+          </button>
+
+        </div>
+
+
+        <div class="post-content">
+
+          Selamat datang di MEXA! 🎉
+
+          <br>
+
+          Connect. Share. Grow.
+
+          <br><br>
+
+          Tempat untuk berbagi cerita, bertemu
+          dengan orang baru, dan membangun
+          komunitas bersama. 💙
+
+        </div>
+
+
+        <div class="mexa-post-banner">
+          <div class="banner-logo">
+
+            <span>M</span>
+
+            <span class="banner-e">
+              <i></i>
+              <i></i>
+              <i></i>
+            </span>
+
+            <span>X</span>
+            <span>A</span>
+
+          </div>
+
+          <small>
+            Connect. Share. Grow.
+          </small>
+
+        </div>
+
+
+        <div class="post-stat">
+
+          <span>♥ 24 suka</span>
+
+          <span>
+            8 komentar · ↗ 3
+          </span>
+
+        </div>
+
+
+        <div class="post-actions">
+
+          <button class="like-btn">
+            ♡ <span>Suka</span>
+          </button>
+
+          <button class="comment-btn">
+            ▢ <span>Komentar</span>
+          </button>
+
+          <button class="share-btn">
+            ↗ <span>Bagikan</span>
+          </button>
+
+        </div>
+
+
+        <div class="comment-area">
+
+          <div class="mexa-avatar small">
+            M
+          </div>
+
+          <input
+            type="text"
+            placeholder="Tulis komentar..."
+          >
+
+          <button class="send-comment">
+            ➤
+          </button>
+
+        </div>
+
+      </article>
+
+
+      <!-- SECOND POST -->
+      <article class="mexa-card mexa-post">
+
+        <div class="post-header">
+
+          <div class="mexa-avatar">
+            A
+          </div>
+
+          <div class="post-user">
+
+            <strong>MEXA Community</strong>
+
+            <small>
+              1 jam lalu · Publik
+            </small>
+
+          </div>
+
+          <button class="post-more">
+            ⋯
+          </button>
+
+        </div>
+
+
+        <div class="post-content">
+
+          Ini adalah tampilan awal feed MEXA.
+
+          <br>
+
+          Yuk bangun komunitas bersama! 💙
+
+        </div>
+
+
+        <div class="mexa-community-banner">
+
+          <strong>
+            MEXA
+          </strong>
+
+          <span>
+            COMMUNITY
+          </span>
+
+        </div>
+
+
+        <div class="post-stat">
+
+          <span>♥ 18 suka</span>
+
+          <span>
+            5 komentar · ↗ 2
+          </span>
+
+        </div>
+
+
+        <div class="post-actions">
+
+          <button class="like-btn">
+            ♡ <span>Suka</span>
+          </button>
+
+          <button class="comment-btn">
+            ▢ <span>Komentar</span>
+          </button>
+
+          <button class="share-btn">
+            ↗ <span>Bagikan</span>
+          </button>
+
+        </div>
+
+      </article>
+
+    </main>
+
+
+    <!-- RIGHT SIDEBAR -->
+    <aside class="mexa-rightbar">
+
+      <section class="right-card profile-card">
+
+        <div class="mexa-avatar large">
+          M
+        </div>
+
+        <strong>
+          MEXA User
+        </strong>
+
+        <small>
+          @mexauser
+        </small>
+
+        <div class="profile-stats">
+
+          <div>
+            <strong>12</strong>
+            <small>Postingan</small>
+          </div>
+
+          <div>
+            <strong>254</strong>
+            <small>Pengikut</small>
+          </div>
+
+          <div>
+            <strong>180</strong>
+            <small>Mengikuti</small>
+          </div>
+
+        </div>
+
+        <button class="profile-button">
+          Lihat Profil
+        </button>
+
+      </section>
+
+
+      <section class="right-card">
+
+        <h3>
+          🔥 Trending MEXA
+        </h3>
+
+        <div class="trend">
+          <strong>#MEXA</strong>
+          <small>Topik populer</small>
+        </div>
+
+        <div class="trend">
+          <strong>#Gaming</strong>
+          <small>2,4 rb postingan</small>
+        </div>
+
+        <div class="trend">
+          <strong>#Community</strong>
+          <small>1,8 rb postingan</small>
+        </div>
+
+        <div class="trend">
+          <strong>#Indonesia</strong>
+          <small>Topik populer</small>
+        </div>
+
+      </section>
+
+
+      <section class="right-card">
+
+        <h3>
+          👥 Saran Pengguna
+        </h3>
+
+        <div class="suggest-user">
+          <div class="mexa-avatar small">R</div>
+          <div>
+            <strong>Rina</strong>
+            <small>@rina</small>
+          </div>
+          <button>Ikuti</button>
+        </div>
+
+        <div class="suggest-user">
+          <div class="mexa-avatar small">B</div>
+          <div>
+            <strong>Budi</strong>
+            <small>@budi</small>
+          </div>
+          <button>Ikuti</button>
+        </div>
+
+        <div class="suggest-user">
+          <div class="mexa-avatar small">S</div>
+          <div>
+            <strong>Sari</strong>
+            <small>@sari</small>
+          </div>
+          <button>Ikuti</button>
+        </div>
+
+      </section>
+
+    </aside>
+
+  </div>
+
+
+  <!-- MOBILE NAV -->
+  <nav class="mexa-mobile-nav">
+
+    <button class="active">
+      ⌂
+      <small>Beranda</small>
+    </button>
+
+    <button>
+      ⌕
+      <small>Jelajah</small>
+    </button>
+
+    <button class="mobile-add">
+      +
+    </button>
+
+    <button>
+      ♧
+      <small>Notifikasi</small>
+    </button>
+
+    <button>
+      ●
+      <small>Profil</small>
+    </button>
+
+  </nav>
+
+
+  <!-- POST MODAL -->
+  <div
+    id="postModal"
+    class="mexa-modal hidden"
+  >
+
+    <div class="modal-box">
+
+      <div class="modal-header">
+
+        <strong>
+          Buat Postingan
+        </strong>
+
+        <button id="closePostModal">
+          ×
         </button>
 
       </div>
 
-    </section>
+      <textarea
+        id="postText"
+        placeholder="Apa yang kamu pikirkan?"
+      ></textarea>
 
+      <div class="modal-tools">
 
-    <!-- POST 1 -->
-
-    <article class="card">
-
-      <div class="post-header">
-
-        <div class="avatar">M</div>
-
-        <div>
-          <div class="user-name">
-            MEXA User
-          </div>
-
-          <div class="user-time">
-            Baru saja · 🌎 Publik
-          </div>
-        </div>
-
-        <button class="more">⋯</button>
+        <button>▣ Foto</button>
+        <button>▶ Video</button>
+        <button>⌖ Lokasi</button>
+        <button>@ Tag</button>
 
       </div>
 
-      <div class="post-text">
-
-        Selamat datang di MEXA! 🎉
-        <br>
-        Connect. Share. Grow.
-        <br><br>
-        Tempat untuk berbagi cerita dan terhubung
-        bersama komunitas.
-
-      </div>
-
-      <div
-        class="post-image"
-        style="
-        display:flex;
-        align-items:center;
-        justify-content:center;
-        background:
-        linear-gradient(135deg,#172d91,#713de0);
-        color:white;
-        font-size:35px;
-        font-weight:900;
-        "
+      <button
+        id="publishBtn"
+        class="publish-btn"
       >
-        MEXA
-      </div>
-
-      <div class="post-stats">
-
-        <span>❤️ 24 suka</span>
-        <span>💬 8 komentar · ↗️ 3</span>
-
-      </div>
-
-      <div class="post-actions">
-
-        <button>❤️ Suka</button>
-        <button>💬 Komentar</button>
-        <button>↗️ Bagikan</button>
-
-      </div>
-
-    </article>
-
-
-    <!-- POST 2 -->
-
-    <article class="card">
-
-      <div class="post-header">
-
-        <div class="avatar">A</div>
-
-        <div>
-          <div class="user-name">
-            MEXA Community
-          </div>
-
-          <div class="user-time">
-            1 jam lalu · 🌎 Publik
-          </div>
-        </div>
-
-        <button class="more">⋯</button>
-
-      </div>
-
-      <div class="post-text">
-
-        Ini adalah tampilan awal feed MEXA.
-        Yuk bangun komunitas bersama! 💙
-
-      </div>
-
-      <div
-        class="post-image"
-        style="
-        background:
-        linear-gradient(
-          135deg,
-          #486fff,
-          #a052e8
-        );
-        display:flex;
-        align-items:center;
-        justify-content:center;
-        color:white;
-        font-size:25px;
-        font-weight:800;
-        "
-      >
-        Connect. Share. Grow.
-      </div>
-
-      <div class="post-stats">
-
-        <span>❤️ 18 suka</span>
-        <span>💬 5 komentar · ↗️ 2</span>
-
-      </div>
-
-      <div class="post-actions">
-
-        <button>❤️ Suka</button>
-        <button>💬 Komentar</button>
-        <button>↗️ Bagikan</button>
-
-      </div>
-
-    </article>
-
-  </main>
-
-
-  <!-- RIGHT COLUMN -->
-
-  <aside class="right-column">
-
-    <div class="right-card profile-mini">
-
-      <div class="avatar">
-        M
-      </div>
-
-      <h3>
-        MEXA User
-      </h3>
-
-      <p>
-        @mexauser
-      </p>
-
-      <button class="profile-btn">
-        Lihat Profil
+        Posting
       </button>
 
     </div>
 
-
-    <div class="right-card">
-
-      <h3>
-        🔥 Trending MEXA
-      </h3>
-
-      <div class="trend">
-        <strong>#MEXA</strong>
-        <br>
-        <small>Topik populer</small>
-      </div>
-
-      <div class="trend">
-        <strong>#Community</strong>
-        <br>
-        <small>Yang sedang dibicarakan</small>
-      </div>
-
-      <div class="trend">
-        <strong>#Gaming</strong>
-        <br>
-        <small>2,4 rb postingan</small>
-      </div>
-
-      <div class="trend">
-        <strong>#Indonesia</strong>
-        <br>
-        <small>Topik populer</small>
-      </div>
-
-    </div>
+  </div>
 
 
-    <div class="right-card">
-
-      <h3>
-        👥 Saran Pengguna
-      </h3>
-
-      <div class="trend">
-        <strong>Rina</strong>
-        <br>
-        <small>@rina</small>
-      </div>
-
-      <div class="trend">
-        <strong>Budi</strong>
-        <br>
-        <small>@budi</small>
-      </div>
-
-      <div class="trend">
-        <strong>Sari</strong>
-        <br>
-        <small>@sari</small>
-      </div>
-
-    </div>
-
-  </aside>
-
-</div>
-
-
-<!-- MOBILE NAV -->
-
-<nav class="bottom-nav">
-
-  <button>🏠</button>
-  <button>🔎</button>
-
-  <button class="plus">
-    +
-  </button>
-
-  <button>🔔</button>
-  <button>👤</button>
-
-</nav>
+  <script src="./js/mexa-home.js"></script>
 
 </body>
 </html>
