@@ -1,19 +1,8 @@
-const app = document.getElementById("mexa-app");
-
-app.innerHTML = `
+document.getElementById("mexa-app").innerHTML = `
   <div class="mexa-login-card">
 
-    <div class="mexa-logo" aria-label="MEXA">
-      <span class="logo-m">M</span>
-
-      <span class="logo-e" aria-label="E">
-        <i></i>
-        <i></i>
-        <i></i>
-      </span>
-
-      <span class="logo-x">X</span>
-      <span class="logo-a">A</span>
+    <div class="mexa-logo">
+      MEXA
     </div>
 
     <div class="mexa-subtitle">
